@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage[margin=1in,includefoot]{geometry}
+\usepackage{import}
+
+
+% Header stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage\ }
+\renewcommand{\footrulewidth}{1pt}
+%
+
+\begin{document}
+	\import{./}{titlepage.tex}
+	\tableofcontents
+	\thispagestyle{empty}
+	\cleardoublepage
+	\setcounter{page}{1}
+	
+	\import{chapters/chapter1-introduction/}{introduction.tex}
+	\import{chapters/chapter2-aims-and-objectives/}{aims-and-objectives.tex}
+	\import{chapters/chapter3-research/}{research.tex}
+	\import{chapters/chapter4-planning-and-methodology}{planning-and-methodology.tex}
+	\import{chapters/chapter5-requirements}{requirements.tex}
+	\import{chapters/chapter6-design}{design.tex}
+\end{document}

@@ -1,5 +1,6 @@
 \subsubsection{Uniform cost search (UCS)}
-Uniform cost search is an adaptation on Dijkstra’s algorithm that allows costs to be considered when traversing the graph and early termination of the algorithm. This adaptation takes the existing nodes and will expand all nodes with the same total costs. Another way UCS differs from Dijkstra’s is the fact that it does not find all paths and has an early exit once the target location has been discovered \citetemp.  Although using the total cost for this still results in a very exhaustive search and for this reason is still slower than A*, and when weighting differences don’t exist looks the same as Dijkstra’s when visualised as demonstrated below
+Uniform cost search is an adaptation on Dijkstra’s algorithm that allows costs to be considered when traversing the graph and early termination of the algorithm. This adaptation takes the existing nodes and will expand all nodes with the same total costs. Another way UCS differs from Dijkstra’s is the fact that it does not find all paths and has an early exit once the target location has been discovered \citetemp.  Although using the total cost for this still results in a very exhaustive search and for this reason is still slower than A*, and when weighting differences don’t exist it looks the same as Dijkstra’s when visualised as demonstrated below
 \begin{center}
-\includegraphics[width=10cm]{example-image-a}
+\includegraphics[width=10cm]{example-image-a}\\
+Visual comparison of Dijktras vs UCS with no weighting from \citetemp
 \end{center}

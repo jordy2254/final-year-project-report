@@ -1,1 +1,61 @@
 \section{Requirements}
+The following chapter will introduce the various requirements for the project.
+
+MoSCoW
+
+\subsubsection{Android}
+Must Have
+\begin{itemize}
+	\item Synchronise pre-created maps from a central server
+	\item Accurately display user location on the map
+		\begin{itemize}
+			\item Define x,y co-ordinate of location on current map
+			\item Identify correct Building, Floor \& room
+			\item Define the location they are facing
+		\end{itemize}
+	\item user can target a room they wish to go to
+	\item path finding can take the user from their current location to their target
+	
+\end{itemize}
+Should Have
+\begin{itemize}
+	\item High level of accuracy below 0.5 meters
+\end{itemize}
+Could Have
+\begin{itemize}
+	\item Submit location data back to the server, Ie for use a web api for tracking assets, managing staff etc.
+	
+\end{itemize}
+Won't have
+\begin{itemize}
+	\item Allow the user to be directed via voice prompts
+	\item Allow the user to be directed via written directions
+\end{itemize}
+
+\subsubsection{Web app}
+
+Must Have
+\begin{itemize}
+	\item External sso sign on system IE: Auth0
+	\item The ability to create a new map
+	\begin{itemize}
+		\item The ability to add new Buildings, rooms, floors etc.
+		\item The ability to add indents to a room to make it non-square
+		\item The ability to add new path finding nodes
+		\item The ability to add new sensors with information		
+	\end{itemize}
+	
+\end{itemize}
+Should Have
+\begin{itemize}
+	\item x
+\end{itemize}
+Could Have
+\begin{itemize}
+	\item A dashboard panel for viewing map information.
+\end{itemize}
+Won't have
+\begin{itemize}
+	\item Ability to create room decorations/details
+	\item The ability to draw a room wall by wall
+\end{itemize}

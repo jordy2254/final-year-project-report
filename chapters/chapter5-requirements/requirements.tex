@@ -1,61 +1,47 @@
 \section{Requirements}
-The following chapter will introduce the various requirements for the project.
+The following chapter will introduce the various requirements for the project. the method of this will be moscow. blah blah blah
 
 MoSCoW
-
 \subsubsection{Android}
-Must Have
-\begin{itemize}
-	\item Synchronise pre-created maps from a central server
-	\item Accurately display user location on the map
-		\begin{itemize}
-			\item Define x,y co-ordinate of location on current map
-			\item Identify correct Building, Floor \& room
-			\item Define the location they are facing
-		\end{itemize}
-	\item user can target a room they wish to go to
-	\item path finding can take the user from their current location to their target
-	
-\end{itemize}
-Should Have
-\begin{itemize}
-	\item High level of accuracy below 0.5 meters
-\end{itemize}
-Could Have
-\begin{itemize}
-	\item Submit location data back to the server, Ie for use a web api for tracking assets, managing staff etc.
-	
-\end{itemize}
-Won't have
-\begin{itemize}
-	\item Allow the user to be directed via voice prompts
-	\item Allow the user to be directed via written directions
-\end{itemize}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{| p{0.2\textwidth} | p{0.7\textwidth} | p{0.1\textwidth}|}
+	\hline
+	Functional/non-functional & Requirement & Priority\\\hline
+	Functional & Synchronise maps from a central server VIA, mapId \& Password (If applicable)& Must\\\hline
+	Functional & The system should work offline for synchronised maps & Must\\\hline
+	Functional & 
+		Accurately display user location on map Including:
+			\begin{itemize}
+				\item The x,y co-ordinate of location on current map
+				\item The Identification of correct Building, Floor \& room
+				\item The location they are facing
+			\end{itemize}
+	 & Must\\\hline
+	Functional & Select desired location on the map to navigate to & Must\\\hline
+	Functional & Path finding can guide the user to there desired location, either from another point or from their current location & Must\\\hline
+	Functional & Send location data back to a central server for dashboard layouts, staff management etc. & Could\\\hline
+	Functional & User can be directed via written directions & Could\\\hline
+	Functional & Optimisation of routes based on parameters IE. Disability mode to avoid stairs & Could\\\hline
+	Functional & User can be directed by voice prompts & Won't\\\hline
+	Non functional & The positioning system must locate the user down to an accuracy of sub 0.5 meters & Must\\\hline
+	Non functional & Re-rendering of outdated map state should display in the equivilent of 30fps (33.3 milliseconds) & Must\\\hline
 
-\subsubsection{Web app}
+\end{tabular}
 
-Must Have
-\begin{itemize}
-	\item External sso sign on system IE: Auth0
-	\item The ability to create a new map
-	\begin{itemize}
-		\item The ability to add new Buildings, rooms, floors etc.
-		\item The ability to add indents to a room to make it non-square
-		\item The ability to add new path finding nodes
-		\item The ability to add new sensors with information		
-	\end{itemize}
-	
-\end{itemize}
-Should Have
-\begin{itemize}
-	\item x
-\end{itemize}
-Could Have
-\begin{itemize}
-	\item A dashboard panel for viewing map information.
-\end{itemize}
-Won't have
-\begin{itemize}
-	\item Ability to create room decorations/details
-	\item The ability to draw a room wall by wall
-\end{itemize}
+\subsubsection{Web application}
+\begin{tabular}{| p{0.2\textwidth} | p{0.7\textwidth} | p{0.1\textwidth}|}
+	\hline
+	Functional/non-functional & Requirement & Priority\\\hline
+	Functional & Protected by an SSO provider & Must\\\hline
+	Functional & Ability to create new maps & Must\\\hline
+	Functional & Ability to create, amend \& delete the different areas of map data \begin{itemize}
+		\item Map settings Ie: Map Name
+		\item Buildings, Floors, Room, Indents of rooms, Logical Map (Path Nodes), sensors etc.
+	\end{itemize}& Must\\\hline
+	Functional & Dashboard functionality for viewing map statistics & Could \\\hline
+	Functional & Ability to add various room decorations IE: Door's, windows, sofa's etc. & Won't\\\hline
+	Non-functional & The editing system must be secure giving ability to edit a map only to the owner & Must\\\hline
+	Non-functional & The web application must work smoothly updating in the background, only presenting errors to the user IE: Invalid request, failure to reach the server etc & Must\\\hline
+	Non-functional & If and update does error, the user must be notified of the data loss, along with an option to re-try & Must\\\hline
+\end{tabular}
+

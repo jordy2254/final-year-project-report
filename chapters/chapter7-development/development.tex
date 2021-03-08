@@ -3,12 +3,18 @@ The following chapter will cover interesting problems that arose during developm
 
 \subsection{Encountered problems} %Find something more proffesional
 \subsubsection{Room Polygon calculation}
-The Rest application was the first element built during development and based on the designs rooms are stored with dimensions and then a series of indents. This works well however it did cause an issue.
-Interesting things i found during development, the first of these was the algorithm to turn renctangles and indents into a polygon, it was alot more complicated than initially thought and something that wasn't covered on the internet after some searching.
+The Rest application was the first element built during development and based on the designs rooms are stored with dimensions and then a series of indents. This works well however did pose an unexpected issue. The issue this posed was turning this room into a polygon for rendering based on the properties. After various google searches and paper searches a solution still wasn't found for the problem so a custom algorithm was worked out and designed in order to work. This required several iterations to find a solution that worked.
 
-The algorithm to do this works by yadadada
+The final developed algorithm is simple on the theory but is more complicated than it seems initially. The base principal is to find overlapping edges of the original room and the indents. These overlapping edges need to adapt the final set of pairs. This works by removing the section of overlap, if this is on a corner then the original room wall will go the prior point. If it's on the center of a wall then it will remove the intersecting edge. Below is several diagrams demonstrating this algorithm.
+
+The final problem once calculating the walls was turining the result into a valid polygon, again google and research paper's had no reference to this so the algorithm was expanded. The way this works is by parity checking the joining edges and if there is a mismatch the edges are flipped.
+
+Finally pseudo code for this algorithm can be seen below:
+
+One advantage of the approach finalised is it also works with various other shaped. Aslong as the walls overlap in the correct way any polygon shape could be added to the edge meaning that other shaped indents to rectangles are possible.
 
 \subsubsection{Location calculation}
+
 \subsection{Implementation Artefacts}
 The below section is going to highlight the different results of the implementation, this will mostly consist of some screenshots of each section of the program. The aim of this is to demonstrate the basic overview of what was developed as part of the system.
 

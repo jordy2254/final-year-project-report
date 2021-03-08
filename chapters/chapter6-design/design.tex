@@ -4,14 +4,23 @@ In order to make the application easy to use, design considerations have come fr
 The design of the system happened in several in stages which are detailed below.
 
 \subsection{User stories}
-The user stories can be found within \appendixtemp. The point of the user stories where to aid in generation of the test plan (Where user stories stand as a test case themselves). In addition the user stories also aided in solidification of the requirements defined in the previous chapter. 
+User stories are an excellent way of creating more detailed requirements for development. The below user stories are based of the requirements list, each user story contains it's own set of acceptance testing as such will be used in conjunction with the test plan to create a solid foundation for testing the project.
+
+\begin{itemize}
+	\item As a business I want to be able to create indoor maps so that my clients can navigate on my premises
+	\item As a business I want to be able to password protect my created maps, so only those who have the password (authorised) can synchronise them
+	\item As a business I want to be able to view statistics of my maps such as syncronised count, so that I can gauge who's using the system\\
+	\item As a consumer I want to synchronise maps so I can get directions in unknown locations
+	\item As a consumer I want the path finding to be accurate so that I don't continue to get lost
+	\item As a consumer I want to be able to amend the path finding algorithm so that it takes me up lifts as opposed to stairs
+	\item As a consumer I want to be able to explore a location prior to arrival to gain an idea of the location
+\end{itemize}
 
 \subsection{Test plan}
-%Maybe requirements testing? i n eed to make ui tests too :sickface:
-Below is a test plan based on the requirements analysis and user stories from previous sections. This test plan will be reviewed for the next iterative piece of development and will also be used for final testing to ensure the project goals are met.
+Extra testing may be needed in conjunction to the scenarios mentioned in the above user stories, as such a full test plan has been developed in order to test the application fully. This test plan will be completed at the end of development, and test cases picked off by feature, to ensure the development done passes the situations layed out.
 
 \subsection{Architecture overview}
-With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work. This architecure overview is useful for understanding the base system that has been implemented. It can be seen there are 3 main sections
+With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented. It can be seen there are 3 main sections
 
 \begin{itemize}
 	\item Web application
@@ -26,13 +35,19 @@ Before development and to save times it's important to consider any data that ma
 \\
 Some diagrams go here
 \\
-As can be seen from the data structure it's resonobly straight forward but contains all of the data that's required to store basic map information. The generated data structure within GoLang can be viewed in \appendixtemp
+As can be seen from the data structure it's reasonably straight forward but contains all of the data that's required to store basic map information. The generated data structure within GoLang can be viewed in \appendixtemp
 
 I don't know an erd I guess and data dictionary, maybe some other database design things here too. discuss the choices as well.
 
-\subsection{Sequence Diagrams Web Application}
+\subsection{Sequence Diagrams}
+\subsection{Web Application}
 
-\subsection{Sequence Diagrams Android application}
+\subsection{Android application}
 
 \subsection{UI Designs}
-UI Designs are a complicated task and are what control all of the interface with the application. Research was done on existing applicactions such as google maps \& apple maps. The reason for this was to create a UI that was not only nice feeling, but also felt familiar to a user and not need extra input or lessons on how to use the system. Below are some diagrams for the UI.
+There exists a range of map applications already implemented including Google maps, Waze \& apple Maps. Each mapping application has a similar UI but they do vary slightly. \appendixtemp contains some screenshots of each of these applications. With large companies having the budget to design optimum and efficient UI's the final product of the mapping system will be a combination of these UI's. Below is the intended UI designs for the applications each of these designed where made on Figma, a tool which can be used for pro-typing UI and also linking frames together to end up with a rough interactive version of the design.
+
+\subsubsection{Android Application}
+
+
+\subsubsection{Web Application}

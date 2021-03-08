@@ -4,15 +4,32 @@ In order to make the application easy to use, design considerations have come fr
 The design of the system happened in several in stages which are detailed below.
 
 \subsubsection{User stories}
+The user stories can be found within \appendixtemp. The point of the user stories where to aid in generation of the test plan (Where user stories stand as a test case themselves). In addition the user stories also aided in solidification of the requirements defined in the previous chapter. 
+
 \subsubsection{Test plan}
 %Maybe requirements testing? i n eed to make ui tests too :sickface:
 Below is a test plan based on the requirements analysis and user stories from previous sections. This test plan will be reviewed for the next iterative piece of development and will also be used for final testing to ensure the project goals are met.
 
 \subsubsection{Architecture overview}
-With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work
+With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work. This architecure overview is useful for understanding the base system that has been implemented. It can be seen there are 3 main sections
+
+\begin{itemize}
+	\item Web application
+	\item Android Application
+	\item Rest API
+\end{itemize}
+
+Each of these sections alone focus as one large "module" 
 
 \subsubsection{Data Storage}
+Before development and to save times it's important to consider any data that may be required on the REST API. Using an Object Relation Manager (ORM) for handling of data is important for large projects and scalability. As an ORM is independent of SQL so the SQL dialect can be changed in the future if ever needed. An ORM's job is to also create the basic table structure and other elements for you. Although an ORM is being used it's still important to know the data that's required and the final structure of the data. Below is several database design standard showing how the final data structure should look.
+\\
+Some diagrams go here
+\\
+As can be seen from the data structure it's resonobly straight forward but contains all of the data that's required to store basic map information. The generated data structure within GoLang can be viewed in \appendixtemp
+
 I don't know an erd I guess and data dictionary, maybe some other database design things here too. discuss the choices as well.
+
 \subsubsection{Sequence Diagrams Web Application}
 Possibly cover program flow
 

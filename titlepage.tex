@@ -17,7 +17,8 @@
 	Student number: \#17019992\\
 	[1cm]
 	\end{flushright}
+	\immediate\write18{./wc.shell > wcscriptoutput.tex}
 	\begin{flushright}
-		Approximate word count: 10,000 Words
+		Approximate word count: \input{wcscriptoutput.tex} Words
 	\end{flushright}
 \end{titlepage}

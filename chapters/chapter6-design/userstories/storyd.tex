@@ -1,0 +1,24 @@
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	\newline Story Name & \newline Web app Map security\\\hline
+	\newline Requirements covered: & \newline \ref{web:mapsecurity}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+	\newline As a Business 
+	I want to be able to password protect my created maps\newline
+	So that only those who have the password (authorised) can synchronise them}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	%A/C 1
+	\newline\underline{Scenario 1}\newline
+	Given user has selected map \newline
+	When on map settings are viewed \newline 
+	Then user has an option to enter a password\newline
+	
+	&
+	\newline\underline{Scenario 2}\newline
+	Given A map is protected by a password \newline
+	When When an incorrect password is used on synchronisation \newline 
+	Then the map fails to synchronise\newline
+	\\\hline
+\end{longtable}

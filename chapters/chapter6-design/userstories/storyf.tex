@@ -1,0 +1,80 @@
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	\newline Story Name & \newline Android: Syncronisation\\\hline
+	\newline Requirements covered: & \newline \ref{android:sync} \& \ref{web:mapsecurity} \& \ref{android:offline} \\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		\newline As a Consumer 
+		I want to be able to Synchronise maps easily
+		So that I can quickly and efficiently get directions in unknown locations}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	%A/C 1
+	\newline\underline{Scenario 1}\newline
+	Given user is on main menu \newline
+	When plus button is pressed \newline 
+	When Valid Map ID \& password are entered \newline 
+	When Confirm button is pressed \newline 
+	Then new map is added to the list of maps\newline
+	
+	& 
+	\newline\underline{Scenario 2}\newline
+	Given user is on main menu \newline
+	When plus button is pressed \newline 
+	When Invalid Map ID is entered \newline 
+	When Confirm button is pressed \newline 
+	Then Error message is displayed and map is not added to the list\newline\\\hline
+	
+	\newline\underline{Scenario 3}\newline
+	Given user is on main menu \newline
+	When plus button is pressed \newline 
+	When Valid map ID is entered \newline 
+	When Invalid map password is entered \newline 
+	When Confirm button is pressed \newline 
+	Then Error message is displayed and map is not added to the list\newline
+	
+	&
+	
+	\newline\underline{Scenario 4}\newline
+	Given user is on main menu \newline
+	Given user has maps synchronised \newline
+	When Map delete is pressed \newline 
+	Then The map file is deleted from the device and removed from the view\newline\\\hline
+	
+	\newline\underline{Scenario 5}\newline
+	Given user is on main menu \newline
+	Given user has maps synchronised \newline
+	Given user map is outdated \newline
+	When Map synchronisation button is pressed \newline 
+	Then The map is resynchronised from the server updating in the UI\newline
+	
+	&
+	
+	\newline\underline{Scenario 6}\newline
+	Given user is on main menu \newline
+	Given user has no maps synchronised \newline
+	Then A message is displayed until successful synchronization notifying of this\newline\\\hline
+	
+	\newline\underline{Scenario 7}\newline
+	Given user is on main menu \newline
+	Given user has synchronised a map\newline
+	Then UI adds the map to the list, and updates the UI\newline
+	
+	&
+	
+	\newline\underline{Scenario 8}\newline
+	Given user opens there QR code app of choice \newline
+	Given QR code details are correct\newline
+	When user scans a map QR code\newline
+	Then QR code will lead to main page of application\newline
+	Then Map will be syncronised\newline
+	\\\hline
+	
+	\newline\underline{Scenario 9}\newline
+	Given user is on main menu \newline
+	Given user has no internet connection\newline
+	Given user has already successfully syncronised map \newline
+	Then user can use the application as normal\newline
+	&
+	\\\hline
+\end{longtable}

@@ -1,0 +1,37 @@
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	\newline Story Name & \newline Android: Route Selection\\\hline
+	\newline Requirements covered: & \newline\ref{android:locsel} \& \ref{android:pathfinding} \\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		\newline As a Consumer 
+		I want to be able to explore a location prior to arrival
+		So that I can gain knowledge of the location prior to arrival}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	%A/C 1
+	\newline\underline{Scenario 1}\newline
+	Given user has selected map \newline 
+	Then user has can drag/zoom around the map \& change which floor is being viewed \newline
+	&
+	\newline\underline{Scenario 2}\newline
+	Given user has selected map \newline 
+	Then user can select a target location \newline
+	\\\hline
+	
+	\newline\underline{Scenario 3}\newline
+	Given user has selected a target location \newline 
+	Then user has can select a start location \newline
+	&
+	\newline\underline{Scenario 4}\newline
+	Given user has selected start \& end locations \newline 
+	When user clicks the directions button \newline
+	Then user can see path drawn on map \newline
+	\\\hline
+	\newline\underline{Scenario 5}\newline
+	Given user has selected current location for start \newline 
+	Given user selected end location, and is in direction mode \newline 
+	Then The path will update as the user walks it \newline
+	&
+	\\\hline
+\end{longtable}

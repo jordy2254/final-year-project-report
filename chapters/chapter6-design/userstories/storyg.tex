@@ -1,0 +1,25 @@
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	\newline Story Name & \newline Android: Path finding modifications\\\hline
+	\newline Requirements covered: & \newline \ref{android:pathfindingmod}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		\newline As a Consumer 
+		I want to be able to avoid stairs
+		So that I have the option to use lifts, or access an area as a disabled user}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+
+	\newline\underline{Scenario 1}\newline
+	Given user has selected map \newline
+	Given user has selected a start and end point \newline
+	When on map route options are viewed \newline 
+	Then user has an option to avoid stairs\newline
+	&
+	\newline\underline{Scenario 2}\newline
+	Given user has selected avoid stairs option \newline
+	Given Map has stairs \& lifts \newline
+	When path crosses a staircase \newline 
+	Then Path finding will find an alternate route\newline
+	\\\hline
+\end{longtable}

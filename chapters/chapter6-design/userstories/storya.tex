@@ -1,0 +1,35 @@
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	\newline Story Name & \newline Web app Map editing\\\hline
+	\newline Requirements covered: & \newline \ref{web:sso} \& \ref{web:nmap} \& \ref{web:mapedit} \ref{web:roomdec} \\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		\newline As a Business
+		I want to be able to create/edit indoor maps
+		So that my clients can navigate on my premises}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+		\end{center}}\\\hline
+	%A/C 1
+	\newline\underline{Scenario 1}\newline
+	Given user logged in \newline
+	When on map selection screen \newline 
+	Then only that user's maps are available\newline
+	
+	&
+	
+	%A/C 2
+	\newline\underline{Scenario 2}\newline
+	Given user logged in \newline
+	When new map option is selected \newline 
+	Then a blank map will be created.\newline
+	Then all options required to create a map will be available.\newline
+	\\\hline
+	%A/C 3
+	\newline\underline{Scenario 3}\newline
+	Given user logged in \newline
+	When existing map is selected \newline 
+	Then map editing system will start with the selected map\newline
+	Then all options required to create a map will be available.\newline
+	&
+	\\\hline
+\end{longtable}

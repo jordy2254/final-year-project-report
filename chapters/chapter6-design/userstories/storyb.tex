@@ -1,0 +1,21 @@
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	\newline Story Name & \newline Web: Data loss prevention\\\hline
+	\newline Requirements covered: & \newline \ref{web:datalossprevention}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		\newline As a Business 
+		I want to be able to be aware of any errors when creating maps
+		So that I can be aware of any potential data loss}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	
+	\newline\underline{Scenario 1}\newline
+	Given user is editing map\newline
+	When API is in accessable or returns an error\newline 
+	Then user at minimum user is notified of lost data\newline
+	Then user has an option to re-try request\newline
+	Then user has an option to revert request\newline
+	&
+	\\\hline
+\end{longtable}

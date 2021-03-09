@@ -1,0 +1,196 @@
+\subsection{User stories}
+User stories are an excellent way of creating more detailed requirements for development. The below user stories are based of the requirements list, each user story contains it's own set of acceptance testing as such will be used in conjunction with the test plan to create a solid foundation for testing the project.\\
+
+%Story 1
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	Name & Story Name\\\hline
+	Requirements covered: & x,y,z\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		As a Business
+		I want to be able to create/edit indoor maps
+		So that my clients can navigate on my premises}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+		\end{center}}\\\hline
+	%A/C 1
+	\underline{Scenario 1}\newline
+	Given user logged in \newline
+	When on map selection screen \newline 
+	Then only that user's maps are available\newline
+	
+	&
+	
+	%A/C 2
+	\underline{Scenario 2}\newline
+	Given user logged in \newline
+	When new map option is selected \newline 
+	Then a blank map will be created.\newline
+	Then all options required to create a map will be available.\newline
+	\\\hline
+	%A/C 3
+	\underline{Scenario 3}\newline
+	Given user logged in \newline
+	When existing map is selected \newline 
+	Then map editing system will start with the selected map\newline
+	Then all options required to create a map will be available.\newline
+	&
+	\\\hline
+\end{longtable}
+
+%Story 2
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	Name & Story Name\\\hline
+	Requirements covered: & x,y,z\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+	As a Business 
+	I want to be able to password protect my created maps\newline
+	So that only those who have the password (authorised) can synchronise them}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	%A/C 1
+	\underline{Scenario 1}\newline
+	Given user has selected map \newline
+	When on map settings are viewed \newline 
+	Then user has an option to enter a password\newline
+	
+	&
+	\\\hline
+\end{longtable}
+
+%Story 3
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	Name & Story Name\\\hline
+	Requirements covered: & x,y,z\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		As a Business 
+		I want to be able to view statistics of my maps such as syncronised count
+		so that I can gauge who's using the system}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	%A/C 1
+	\underline{Scenario 1}\newline
+	Given user has selected map \newline
+	When on map settings are viewed \newline 
+	Then user has an option to enter a password\newline
+	
+	&
+	\\\hline
+\end{longtable}
+
+%Story 4
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	Name & Story Name\\\hline
+	Requirements covered: & x,y,z\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		As a Consumer 
+		I want to be able to Synchronise maps easily
+		So that I can quickly and efficiently get directions in unknown locations}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	%A/C 1
+	\newline\underline{Scenario 1}\newline
+	Given user is on main menu \newline
+	When plus button is pressed \newline 
+	When Valid Map ID \& password are entered \newline 
+	When Confirm button is pressed \newline 
+	Then new map is added to the list of maps\newline
+	
+	& 
+	\underline{Scenario 2}\newline
+	Given user is on main menu \newline
+	When plus button is pressed \newline 
+	When Invalid Map ID is entered \newline 
+	When Confirm button is pressed \newline 
+	Then Error message is displayed and map is not added to the list\newline\\\hline
+	
+	\underline{Scenario 3}\newline
+	Given user is on main menu \newline
+	When plus button is pressed \newline 
+	When Valid map ID is entered \newline 
+	When Invalid map password is entered \newline 
+	When Confirm button is pressed \newline 
+	Then Error message is displayed and map is not added to the list\newline
+	
+	&
+	
+	\underline{Scenario 4}\newline
+	Given user is on main menu \newline
+	Given user has maps synchronised \newline
+	When Map delete is pressed \newline 
+	Then The map file is deleted from the device and removed from the view\newline\\\hline
+	
+	\underline{Scenario 5}\newline
+	Given user is on main menu \newline
+	Given user has maps synchronised \newline
+	Given user map is outdated \newline
+	When Map syncronisation button is pressed \newline 
+	Then The map is resyncronised from the server updating in the UI\newline
+	
+	&
+	
+	\underline{Scenario 6}\newline
+	Given user is on main menu \newline
+	Given user has no maps synchronised \newline
+	Then A message is displayed until successful synchronization notifying of this\newline\\\hline
+	
+	\underline{Scenario 7}\newline
+	Given user is on main menu \newline
+	Given user has syncronised a map\newline
+	Then UI adds the map to the list, and updates the UI\newline
+	&
+	\\\hline
+\end{longtable}
+
+%Story 5
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	Name & Story Name\\\hline
+	Requirements covered: & x,y,z\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		As a Consumer 
+		I want to be able to avoid stairs
+		So that I have the option to use lifts, or access an area as a disabled user}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+
+	\underline{Scenario 1}\newline
+	Given user has selected map \newline
+	Given user has selected a start and end point \newline
+	When on map route options are viewed \newline 
+	Then user has an option to avoid stairs\newline
+	&
+	
+	\underline{Scenario 2}\newline
+	Given user attempts to synchronise map on android\newline
+	When user enters incorrect password \newline 
+	Then synchronisation will fail\newline
+	\\\hline
+\end{longtable}
+
+%Story 6
+\begin{longtable}{| p{0.5\textwidth} | p{0.5\textwidth}|}
+	\hline
+	Name & Story Name\\\hline
+	Requirements covered: & x,y,z\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{
+		As a Consumer 
+		I want to be able to explore a location prior to arrival
+		So that I can gain knowledge of the location prior to arrival}\\\hline
+	\multicolumn{2}{| p{1\textwidth} |}{\begin{center}
+			Acceptance Criteria
+	\end{center}}\\\hline
+	%A/C 1
+	\underline{Scenario 1}\newline
+	Given user has selected map \newline 
+	Then user has can drag/zoom around the map \& change which floor is being viewed \newline
+	&
+	\\\hline
+\end{longtable}

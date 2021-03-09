@@ -3,17 +3,20 @@ The following chapter will introduce the various requirements for the project. t
 
 {\renewcommand{\arraystretch}{1.5}}%
 \subsubsection{Rest API}
-	\begin{tabular}{| p{0.2\textwidth} | p{0.7\textwidth} | p{0.1\textwidth}|}
+
+	\begin{tabular}{| p{0.1\textwidth} | p{0.2\textwidth} | p{0.6\textwidth} | p{0.1\textwidth}|}
 		\hline
-		Functional/non-functional & Requirement & Priority\\\hline
+		\# & Functional/non-functional & Requirement & Priority\\\hline
 	\end{tabular}
+
+Requiremnent \ref{android:offline} covers this
 \subsubsection{Android}
-\begin{tabular}{| p{0.2\textwidth} | p{0.7\textwidth} | p{0.1\textwidth}|}
+\begin{tabular}{| p{0.1\textwidth} | p{0.2\textwidth} | p{0.6\textwidth} | p{0.1\textwidth}|}
 	\hline
-	Functional/non-functional & Requirement & Priority\\\hline
-	Functional & Synchronise maps from a central server VIA, mapId \& Password (If applicable)& Must\\\hline
-	Functional & The system should work offline for synchronised maps & Must\\\hline
-	Functional & 
+	\# & Functional/non-functional & Requirement & Priority\\\hline
+	\newrequirement{android:sync} & Functional & Synchronise maps from a central server VIA, mapId \& Password (If applicable)& Must\\\hline
+	\newrequirement{android:offline} &  Functional & The system should work offline for synchronised maps & Must\\\hline
+	\newrequirement{android:sync} & Functional & 
 		Accurately display user location on map Including:
 			\begin{itemize}
 				\item The x,y co-ordinate of location on current map
@@ -21,31 +24,39 @@ The following chapter will introduce the various requirements for the project. t
 				\item The location they are facing
 			\end{itemize}
 	 & Must\\\hline
-	Functional & Select desired location on the map to navigate to & Must\\\hline
-	Functional & Path finding can guide the user to there desired location, either from another point or from their current location & Must\\\hline
-	Functional & Send location data back to a central server for dashboard layouts, staff management etc. & Could\\\hline
-	Functional & User can be directed via written directions & Could\\\hline
-	Functional & Optimisation of routes based on parameters IE. Disability mode to avoid stairs & Could\\\hline
-	Functional & User can be directed by voice prompts & Won't\\\hline
-	Non functional & The positioning system must locate the user down to an accuracy of sub 0.5 meters & Must\\\hline
-	Non functional & Re-rendering of outdated map state should display in the equivalent of 30fps (33.3 milliseconds) & Must\\\hline
+	\newrequirement{android:locsel} & Functional & Select desired location on the map to navigate to & Must\\\hline
+	\newrequirement{android:pathfinding} & Functional & Path finding can guide the user to there desired location, either from another point or from their current location & Must\\\hline
+	\newrequirement{android:locdata} & Functional & Send location data back to a central server for dashboard layouts, staff management etc. & Could\\\hline
+	\newrequirement{android:writtendir} & Functional & User can be directed via written directions & Could\\\hline
+	\newrequirement{android:pathfindingmod} & Functional & Optimisation of routes based on parameters IE. Disability mode to avoid stairs & Could\\\hline
+	\newrequirement{android:voicedir} & Functional & User can be directed by voice prompts & Won't\\\hline
+	\newrequirement{android:posacc} & Non functional & The positioning system must locate the user down to an accuracy of sub 0.5 meters & Must\\\hline
+	\newrequirement{android:rendering} & Non functional & Re-rendering of outdated map state should display in the equivalent of 30fps (33.3 milliseconds) & Must\\\hline
 
 \end{tabular}
 
 
 \subsubsection{Web application}
-\begin{tabular}{| p{0.2\textwidth} | p{0.7\textwidth} | p{0.1\textwidth}|}
+\begin{tabular}{| p{0.1\textwidth} | p{0.2\textwidth} | p{0.6\textwidth} | p{0.1\textwidth}|}
 	\hline
-	Functional/non-functional & Requirement & Priority\\\hline
-	Functional & Protected by an SSO provider & Must\\\hline
-	Functional & Ability to create new maps & Must\\\hline
-	Functional & Ability to create, amend \& delete the different areas of map data \begin{itemize}
+	\# & Functional/non-functional & Requirement & Priority\\\hline
+	
+	\newrequirement{web:sso} & Functional & Protected by an SSO provider & Must\\\hline
+	\newrequirement{web:mapsecurity} & Functional & Maps have the ability to be protected by a PUBLIC password & Must\\\hline
+	\newrequirement{web:nmap} & Functional & Ability to create new maps & Must\\\hline
+	
+	\newrequirement{web:mapedit} & Functional & Ability to create, amend \& delete the different areas of map data \begin{itemize}
 		\item Map settings Ie: Map Name
 		\item Buildings, Floors, Room, Indents of rooms, Logical Map (Path Nodes), sensors etc.
-	\end{itemize}& Must\\\hline
-	Functional & Dashboard functionality for viewing map statistics & Could \\\hline
-	Functional & Ability to add various room decorations IE: Door's, windows, sofa's etc. & Won't\\\hline
-	Non-functional & The editing system must be secure giving ability to edit a map only to the owner & Must\\\hline
-	Non-functional & The web application must work smoothly updating in the background, only presenting errors to the user IE: Invalid request, failure to reach the server etc & Must\\\hline
-	Non-functional & If and update does error, the user must be notified of the data loss, along with an option to re-try & Must\\\hline
+	\end{itemize} & Must\\\hline
+
+	\newrequirement{web:dashboard} & Functional & Dashboard functionality for viewing map statistics & Could \\\hline
+	
+	\newrequirement{web:roomdec} & Functional & Ability to add various room decorations IE: Door's, windows, sofa's etc. & Won't\\\hline
+	
+	\newrequirement{web:security} & Non-functional & The editing system must be secure giving ability to edit a map only to the owner & Must\\\hline
+	
+	\newrequirement{web:performance} & Non-functional & The web application must work smoothly updating in the background, only presenting errors to the user IE: Invalid request, failure to reach the server etc & Must\\\hline
+	
+	\newrequirement{web:datalossprevention} & Non-functional & If and update does error, the user must be notified of the data loss, along with an option to re-try & Must\\\hline
 \end{tabular}

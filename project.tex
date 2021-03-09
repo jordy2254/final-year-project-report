@@ -4,6 +4,7 @@
 \usepackage{lipsum}
 \usepackage[margin=1in,includefoot]{geometry}
 \usepackage{import}
+
 \usepackage[backend=biber, style=authoryear, maxnames=999, maxcitenames=3, firstinits=true, urldate=long]{biblatex}
 \usepackage{xcolor}
 \setlength{\parindent}{0pt}
@@ -14,6 +15,15 @@
 %
 \newcommand{\citetemp}{(REF)}
 \newcommand{\appendixtemp}{(APPENDIX)}
+
+\newcounter{requirementcounter}
+
+\makeatletter
+\newcommand\newrequirement[1]{
+	REQ\arabic{requirementcounter}\def\@currentlabel{REQ\arabic{requirementcounter}}\label{#1}
+	\stepcounter{requirementcounter}
+}
+\makeatother
 
 \begin{document}
 	\import{./}{titlepage.tex}

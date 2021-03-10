@@ -10,7 +10,7 @@
 	{#1\isdot}}
 
 \DeclareFieldFormat[article,inbook,incollection]{title}{#1\isdot}
-\DeclareFieldFormat[article,inbook,incollection]{citetitle}{#1\isdot}
+\DeclareFieldFormat[article,inbook,incollection]{title}{#1\isdot}
 
 \newrobustcmd{\MakeTitleCase}[1]{%
 	\ifboolexpr{test {\ifentrytype{article}} or test {\ifentrytype{inbook}} or test {\ifentrytype{incollection}}}
@@ -60,12 +60,3 @@
 	urlseen    = {accessed},
 	online     = {online},
 }
-
-
-% Header stuff
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[R]{\thepage\ }
-\renewcommand{\footrulewidth}{1pt}

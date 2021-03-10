@@ -9,6 +9,14 @@
 \usepackage{xcolor}
 \setlength{\parindent}{0pt}
 
+% Header stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage\ }
+\renewcommand{\footrulewidth}{1pt}
+
 %Bib stuff
 \import{./}{referencing-preamble.tex}
 \addbibresource{bibliography.bib}

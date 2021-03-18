@@ -1,45 +1,117 @@
 \section{Design}
-In order to make the application easy to use, design considerations have come from various existing map applications such as google maps and apple maps. These systems have heavily impacted the UI design of the application, so it can be familiar to user's coming from those platforms, making the system easy to use.
-
-The design of the system happened in several in stages which are detailed below.
+The following chapter is going to cover the design process for the development of the application. By the end of this design chapter it will be clear of the chosen technologies and a high level knowledge of how the system will function will be understood. As part of the design existing map applications such as Google maps \& waze where looked at. Looking at existing map applications allowed the designs to be inspired from different sections and provide and idea of how these systems work, one great side effect of using these systems as inspiration is that it's hoped the system will be clear how to use by user's that have expierence with them.
 
 \subimport{./userstories/}{userstories.tex}
 
-\subsection{Architecture overview}
-With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented. It can be seen there are 3 main sections
+\subsection{Decided technologies}
+Programming languages and libraries are very varied and people have many opinions on these. General a chosen technology, library or language comes down to the developers preference/what they most comfortable in. Several languages have been decided for the final product.
 
-\begin{itemize}
-	\item Web application
-	\item Android Application
-	\item Rest API
-\end{itemize}
+\subsubsection{Security}
+Many people these days like SSO systems allowing them to sign in from their social media accounts. For this reason an SSO provider will be used in order to protect the REST API and web application. The chosen provider for SSO of this application is Auth0, this is because Auth0 are a well known provider and offer free development and test enviorments making development and implementation easier.
 
-Each of these sections alone focus as one large "module" 
+\subsubsection{Rest API}
+For the rest API, it has been that golang will be used. This is because it's a good use of goes modular approach, and because the project is quite light using something like \& spring is overkill for the scenario. Golang also has comparable performance to Java and is expandable.
 
-\subsection{Data Storage}
-Before development and to save times it's important to consider any data that may be required on the REST API. Using an Object Relation Manager (ORM) for handling of data is important for large projects and scalability. As an ORM is independent of SQL so the SQL dialect can be changed in the future if ever needed. An ORM's job is to also create the basic table structure and other elements for you. Although an ORM is being used it's still important to know the data that's required and the final structure of the data. Below is several database design standard showing how the final data structure should look.
-\\
-Some diagrams go here
-\\
-As can be seen from the data structure it's reasonably straight forward but contains all of the data that's required to store basic map information. The generated data structure within GoLang can be viewed in \appendixtemp
-
-I don't know an erd I guess and data dictionary, maybe some other database design things here too. discuss the choices as well.
-
-\subsection{Sequence Diagrams}
-\subsection{Web Application}
-
-\subsection{Android application}
-
-\subsection{UI Designs}
-There exists a range of map applications already implemented including Google maps, Waze \& apple Maps. Each mapping application has a similar UI but they do vary slightly. \appendixtemp contains some screenshots of each of these applications. With large companies having the budget to design optimum and efficient UI's the final product of the mapping system will be a combination of these UI's. Below is the intended UI designs for the applications each of these designed where made on Figma. Each image is a seperate frame, smaller frames are overlays and it will be explained how they fit with other frames.
+\subsubsection{Web Application}
+The web Application will use React to develop it. This is because the author has an interest in keeping up with current popular technologies and feels this would be a good chance to implement the libary and develop a progessive web app. 
 
 \subsubsection{Android Application}
-Below is a range of designs for the android application for the large parts of functionality. These designs are more detailed than the web application due to there being less "layers" of UI. The main functionality required for the android app is the ability to select maps, search, move around and set points. The below designs cover all of those requirements 
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/AddMap.png}}
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/mapFilterOveralay.png}}
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/Map.png}}
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/MapSelection.png}}
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/MapSelectionWithmaps.png}}
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/RouteOptions.png}}
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/RouteSearch.png}}
+It has been decided the android application will be written using the traditional Java method as opposed to the current default language of Kotlin, the reason for this is because the author is more familiar with Java and is already using new technologies for the web application. Time limitations mean it's not practical to learn Kotlin for this project rendering it out of scope.
+
+\subsection{Architecture overview}
+With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented.
+
+\includegraphics[width=\linewidth]{./images/designs/ArchitectureOverview.png}
+
+\subsection{Data Storage}
+Before development of any new functionality or system it's important to consider the data that's required. The format and quality of the data structure is important the success of a system and is also important to ensure maintainability and expansion is possible in the future. Below is an entity relationship diagram (ERD) for the established data structure for the project.
+
+\begin{center}
+\includegraphics[width=\linewidth]{./images/designs/erd.png}\\
+\end{center}
+One thing missing from the above ERD is the details of each table and every property, this was done in order to keep the above design clear and easy to read and to be able to quickly distinguish the links between the data. Below is a diagram
+
+From the above ERD some design decisions are quickly clear, the first design decision that was made was to store rooms as rectangles, and then overlay rectangles on top of these rooms as indents. The reason this was done was because after looking at a range of indoor maps including UWE's a majority of rooms can be composed from rectangles combined with cut outs of rectangles, because doing this would not cause a massive limitation to the system for early development it was decided to keep this method of storage to allow a quicker development of the working prototype, however it's important to consider a different method of storage in the future if this was to become a business ready solution. 
+
+\subsubsection{Other Data storage}
+The above data storage methods works well for the REST API and storing large data on the server, however a database for the android application is a bit overkill and syncing the databases would be more complicated. For these reasons the android device will store JSON files on the device including all other data it needs to know. Such as the last synchronised data and id/password information.
+\newpage
+\subsection{REST API Design}
+With the data structure defined above, the rest API for this project will perform mostly CRUD operations protected using Auth0, as such no direct design will be done for the rest API, the aim of this section is to give a basic overview of how the rest API will function.
+
+Each data layer will also contain the heirarchial format IE: room update URL would be:\\ /map/buildings/rooms/\{id\}. Each piece of data will contain a route to create, retrieve, update \& delete the piece of data. All routes will be protected via a JWT token which will be supplied by the react application, example URL's and methods for the map itself can be viewed below.
+
+\begin{longtable}{| p{0.2\linewidth} | p{0.1\linewidth} | p{0.7\linewidth}|}
+	\hline
+	End point & Methods & Description \& Returned data\\\hline
+	/maps/\{id\} & GET & Returns whole map data including all child components for the requested ID\\\hline
+	/maps/\{id\} & POST & Updates the map only omiting any child elements  returning the new updated map data\\\hline
+	/maps/\{id\} & DELETE & Deletes the resource from the service\\\hline
+	/maps/ & POST & An empty request will create a blank map, a request containing JSON will be parsed to a full map saving the full map to the database returning new map data\\\hline
+	
+\end{longtable}
+
+An additional route of just /maps will exist to retrieve top level map data for all maps of the logged in user. This route will have a HTTP method of GET and will take no URL parameters or information, it will however be protected by a JWT token.
+Finally one last route will exist ontop of the map which will have the URL of /map/sync which will be used by the android application to syncronise new maps, it will be a post function and will contain formatted json of the mapID and password required, this route will not require any middleware and will be open to use.
+
+\subsection{UI Designs}
+There exists a range of map applications already implemented including Google maps, Waze \& apple Maps. Each mapping application has a similar UI but they do vary slightly. \appendixtemp contains some screenshots of each of these applications. With large companies having the budget to design optimum and efficient UI's the final product of the mapping system will be a combination of these UI's. Both the android application and web application will have there designs as images, and have an explanation of any functionality/links that are not clear from the designs. All designs have been carefully considered to ensure a complete fulfilment of the requirements.
+
+\pagebreak
+\subsubsection{Android Application}
+Below is a range of designs for the android application for the large parts of functionality. These designs are more detailed than the web application due to there being less "layers" of UI. The main functionality required for the android app is the ability to select maps, search, move around and set points. The below designs cover all of those requirements \\
+\\\underline{Map Selection}
+\begin{center}
+	\fbox{\includegraphics[width={0.25\linewidth}]{./images/designs/ui/android/MapSelection.png}}
+	\fbox{\includegraphics[width={0.25\linewidth}]{./images/designs/ui/android/MapSelectionWithmaps.png}}
+\end{center}
+
+The above two views show the basic map selection screen presented when the activity starts. The first screen show's the view if the user has synchronised no maps as highlighted in the prompt the user can add new maps by clicking the plus button on the top menu bar. The view for the new map synchronisation can be viewed in the below screenshot.\\
+
+The second view displays to the user the synchronised maps. This view has several extra options, as can be seen by the icons each map has an independent delete and resynchronise button. Additionally the user has the option to filter their synchronised maps which will bring up a filters panel. Again the design for the filters pane can be view below.
+
+\begin{center}
+	\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/AddMap.png}}
+	\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/mapFilterOveralay.png}}
+\end{center}
+
+\underline{Location}
+\begin{center}
+	\fbox{\includegraphics[width={0.3\linewidth}]{./images/designs/ui/android/Map.png}}
+\end{center}
+ The above image demonstrates the base for the actual location/map view section of the software. The design features a hamburger menu that can expanded to detail the start and end location. By default if the user is found to be within the proximity ofthe maps sensors the location and direction will be presented on the map. The design features all the functionality setout within the requirements, alowing the use of directions, searching, changing route options (Design for overlay below). 
+
+Sub Screens\\
+\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/RouteOptions.png}}\\
+\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/RouteSearch.png}}\\
+
 \subsubsection{Web Application}
+The web application has 2 core states, the first is the map selection screen which can be seen below:\\
+\fbox{\includegraphics[width=\linewidth]{./images/designs/ui/web/MapSelection.png}}
+
+As can be seen the design features 3 options for creating a map, the first is a blank empty map, the second is from an exported json file from an existing map, and the third is from a base template. It's important to ensure the system supports a templating system for the future so basic maps can be created from these templates.
+
+
+The final key component of this design is the selection view for exiting maps the user has, hovering over one of these will allow renaming \& deleting from buttons on the top right, clicking anywhere else will load the map.
+
+\fbox{\includegraphics[width=\linewidth]{./images/designs/ui/web/MapEditor.png}}
+The second state can be seen above and is a basic design for the editing portion of the web app, the web app will feature canvas rendering of the existing map, and will feature a series of tools to move the map, select rooms, edit path and more. In addition to these tools the right hand side will hold any key settings in a heirarchy view where a building can be selected which displays the options for a building plus selection list for child components. 
+
+The map name is editable by clicking on the text for the map name. QR generation is also a feature, this is to match \ref{android:sync} where the android device can scan a bar code that will automatically boot the app and synchronise the map.
+
+Designs for the Dashboard as defined in requirement \ref{web:dashboard} have been omitted due to having a priority of could. The designs for this element will be visited if there is time in the future to complete this requirement
+
+\subsection{Important design considerations}
+As with any system making it generic and expandable is something to consider from an early stage. Not doing this can be detrimental to the long term standing of the code making it more difficult to expand and improve the application with time. In addition creating code that is platform independent is important and this feeds back into expandability.
+
+One key area for this was identified within the research \citetemp technology is constantly changing and Bluetooth is the optimal solution currently although that will change in the future. For this reason one key piece of data to consider is the integration of the positioning in contrast to the remaining section of the program. The best approach for this is to contain sensor data/scanning separate to the location algorithm, in this case they'll be 2 classes; A bluetoothScanAndDistanceService \& a PositioningService where the scanservice feeds into the positining. this gives the ability to isolate the 2 core pieces of logic meaning new sensor types can implement a distanceService and the positing service works independent.
+
+Considerations like this also come in for different types of waypoint IE: a point on the map, a room and your current location. This will also be solved in the same way having a base class implementing the core functions and sub implementations calling the appropriate thing IE: current location would call the positing service to supply the location on the map whereas the PointOnMap can return a fixed point once it's been initialised. This class will also contain an update function and will be ran before feeding the point into the path finding algorithm to calculate the path.
+
+
+
+
+
+
+
+

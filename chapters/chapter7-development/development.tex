@@ -3,17 +3,37 @@ The following chapter will cover interesting problems that arose during developm
 
 \subsection{Encountered problems} %Find something more proffesional
 \subsubsection{Room Polygon calculation}
-The Rest application was the first element built during development and based on the designs rooms are stored with dimensions and then a series of indents. This works well however did pose an unexpected issue. The issue this posed was turning this room into a polygon for rendering based on the properties. After various google searches and paper searches a solution still wasn't found for the problem so a custom algorithm was worked out and designed in order to work. This required several iterations to find a solution that worked.
+As defined in the design, the rooms will be stored as overlapping rectangles and then later drawn to the screen. The process of calculating the walls and polygon for this was a lot more complicated the initially anticipated. Various google searches for this problem bought nothing up initially so an algorithm was needed to be designed. The below information is a brief overview and may miss certain steps such as the ordering of points of the walls in order to make the logic work, a full listing of the code can be found in \appendixtemp.
 
-The final developed algorithm is simple on the theory but is more complicated than it seems initially. The base principal is to find overlapping edges of the original room and the indents. These overlapping edges need to adapt the final set of pairs. This works by removing the section of overlap, if this is on a corner then the original room wall will go the prior point. If it's on the center of a wall then it will remove the intersecting edge. Below is several diagrams demonstrating this algorithm.
+There's several key steps for generating the polygon, the first of these steps is calculating the walls (excluding entrances) that exist for the given shape, this starts out as 2 separate lists of walls one for the room and one for all the indents. after this the room walls are adjusted to account for these, this is done by checking for a collision walls and editing the current points of the room wall. There are 3 different states that can occur when comparing the wall with the overlapping area, these are:
+\begin{itemize}
+	\item Indent starts at the same point as the wall (Original wall is removed)
+	\item Indent starts after the start point of the wall (Original wall is adjusted to meet the start point)
+	\item Indent ends before the end point of the wall (A new wall is added to cover the extra area)
+	\item Indent ends at the same point as the wall (No change necessary)
+	
+\end{itemize}
+Below is a visualisation of how the algorithm works for each state and the final result.
+\begin{center}
+	\includegraphics{example-image-b}
+\end{center}
 
-The final problem once calculating the walls was turining the result into a valid polygon, again google and research paper's had no reference to this so the algorithm was expanded. The way this works is by parity checking the joining edges and if there is a mismatch the edges are flipped.
+Once this has been done depending if the actual walls or polygon is generated depends on what happens, if the actual walls are being done, and further cut-outs are then made on the whole set based on the same logic above and then that set is returned. If however the polygon is being done some further processing is needed to ensure the start point of a wall matches an end point of another, this is done by looping the data and flipping the points based on a parity where an even parity is desired. Once this has been done the points can be followed around generation a list of 2d points that can be used to generate a 2d polygon.
 
-Finally pseudo code for this algorithm can be seen below:
+Further work in the future would allow one of many triangulation methods to be used in order to generate a 2d polygon for OpenGL, further expansion could also turn this so that walls are added to the outside as a further polygon so that a 3d projection can be drawn, however both of these are out of scope for the project currently.
 
-One advantage of the approach finalised is it also works with various other shaped. Aslong as the walls overlap in the correct way any polygon shape could be added to the edge meaning that other shaped indents to rectangles are possible.
 
 \subsubsection{Location calculation}
+
+\subsection{Interesting development}
+\subsubsection{Rendering engine}
+Mostly as learning exercise a custom pixel based rendering system was written for the rendering of the maps. The writing of this code allowed the learning and research of a range of algorithms for drawing shapes such as: line, filled polygons, circles and more. All of this gave a great in sight and experience into what goes into drawing these shapes in more complicated systems. The key point of the render engine is it contains a Screen class which just uses plain Java with it's data being stored in an integer array representing the pixels. this screen class features all the various functions developed for rendering the shapes listed above. This format could also support small graphics in the future for rendering different details to a room such as furniture, windows and doorways.
+
+An unintended advantage for the development of this system was that is separated all the rendering logic from platform specific canvas API's into it's own API where the only platform specific code is the pushing of this pixel data into a bitmap and finally onto a canvas supplied by android's canvas API. Having this means it's easier to port the code over to a new system as all of the rendering is now independent of android's SDK, below is a brief overview of the developed render engine a green box is platform independent and the 
+
+\subsubsection{Dynamic path nodes \& path finding}
+As part of development it was required that a custom point can be added into the path network, so that the path finding algorithm can perform an accurate calculation. A utility class was designed to take the path network and then dynamically link new nodes to that graph. The way this was done was by taking the map data and then using a projection it would link to all other nodes, if the projection hits a wall before the path node then a link is not established otherwise a bi-directional link is created to that node. The utility class keeps track of all these dynamic nodes so that only the dynamic nodes can be amended leaving all original data intact. When existing the program of before serialisation of the map the utility is used to destroy all links and the created node. The main interaction of this system is done by the "waypoint" system which stores the user's desired points, the waypoint system returns a path node when called which is fed into the path finding algorithm of which the result is displayed to the user.
+
 
 \subsection{Implementation Artefacts}
 The below section is going to highlight the different results of the implementation, this will mostly consist of some screenshots of each section of the program. The aim of this is to demonstrate the basic overview of what was developed as part of the system.

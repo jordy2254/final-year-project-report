@@ -3,16 +3,30 @@ The following sections aim is to cover the different way location is calculated 
 
 \subsubsection{Location classification methods}
 There currently exists two key types of location system, the first is a classification system this kind of system can classify a zone/area the user is in but not a co-ordinate of their location within that space. An example of this kind of system could be....
-The second kind of system is a co-ordinate based system. This method of positioning gives an accurate co-ordinate of the user within real world space. An example implementation of this is GPS which gives the user a latitude and longitude of their location on earth.
+The second kind of system is a co-ordinate based system, this method of positioning gives an accurate co-ordinate of the user within a real world space. An example implementation of this is GPS which is used to calculate a longitude and latitude of someone on earth.
 
-With the aim of this project to produce a positioning system for directions the end result will be a co-ordinate based system. For this reason it's important to consider technologies that enable a high range of accuracy. Although if time permits a duel based system could be implemented where small rooms will feature a classification such as that of small offices. Implementing a system like this could save on overall costs of the system making it more accessible.
+With the aim of this project to produce a positioning system for directions the end result will be a co-ordinate based system. For this reason it's important to consider technologies that enable a high range of accuracy. Although if time permits a duel based system could be implemented where small rooms will feature a classification such as a small office/class room. The implementation of a combined system could reduce the overall cost of Implementing the system therefore making it more accessible.
 
-\subsubsection{General Approaches to Location Calculation}
-Calculating a co-ordinate based location is done the same for every technology listed below. This method is called trilateration. Trilateration not to be confused with triangulation, is method of gathering distances from “points” and then finding the intersecting area of those overlapping distances to find the user’s “real location”. The diagram below demonstrates this.
+\subsubsection{General Approach to Location Calculation}
+Calculating a co-ordinate based location is done the same for every technology listed below. This method is called trilateration. Trilateration not to be confused with triangulation, and is method of gathering distances from known “points” and then finding the intersecting area of those overlapping distances to find the user’s “real location”. The diagram below demonstrates this.
 \begin{center}
 	\includegraphics[width=10cm]{example-image-a}\\
-	Image demonstrating circle intesection for 2d location finding from \citetemp
+	Image demonstrating circle intersection for 2d location finding from \citetemp
+\end{center}
+
+it's possible to use the below technologies in a way for classification where the distance measured and surrounding sensors would be able to classify the room/rough area someone is within. The principal is that not picking up sensors that overlap and knowing the max area of the sensors could pose the potential to roughly classify the location of someone below is a diagram demonstrating how this idea could work
+
+\begin{center}
+	\includegraphics[width=10cm]{example-image-b}\\
+	Image demonstrating circle intersection for 2d location finding from \citetemp
 \end{center}
 
 \subsubsection{Increasing accuracy of distance measurements}
-Several of the available technologies listed below rely on the same basic principal of measuring a signal strength. Unfortunately signal strength can suffer issues with accuracy due to a range of issues from localised interference on the sensor. This could background noise, something blocking the sensor and more. In addition different devices on the same standard can broadcast at a different strength which can cause issues with calculating the distance from the sensor as each sensor may need to be calibrated prior to being installed within the system. With a range of different qualities of signal based on the user’s environment and device, it’s important to be able to calibrate sensors to make them more accurate for the user. There exists many papers on this topic and all of them involve calibrating at known distances and the interpolating signal strength from the sensor to the device. 
+Several of the available technologies listed below rely on the same basic principal of measuring a signal strength. Unfortunately signal strength can suffer issues with accuracy due to a range of issues from localised interference on the sensor. This could background noise, something blocking the sensor and more. In addition different devices on the same standard can broadcast at a different strength which can cause issues with calculating the distance from the sensor as each sensor may need to be calibrated prior to being installed within the system. With a range of different qualities of signal based on the user’s environment and device, it’s important to be able to calibrate sensors to make them more accurate for the user. There exists many papers on this topic and all of them involve calibrating at known distances and the interpolating signal strength from the sensor to the device. It's not clear if this calibration process will cover all of the same brand of sensor or if each sensor will be needing calibration, this is something that will be discovered in the early stages and the designs will reflect this.
+
+There exists a basic algorithm for calculating the distance based on the RSSI value of the received signal in example the one found for Bluetooth is below.\\
+
+Using the above algorithm on it's own would result in sporadic measurements that cause potential with being constant with the distance measurement. 
+
+\subsubsection{Other ways of calculating location}
+Dead reckoning, 

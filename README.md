@@ -17,10 +17,10 @@ be added at a later date.
 - [x] Chapter 6
 - [x] Chapter 7 (7.1.2 is still a WIP)
 - [x] Chapter 8 (Still needs it's appendecies added)
-- [ ] Chapter 9
+- [x] Chapter 9 (Conclusion not finalised)
 
 # Building the project
 The project was created with the MikTex repo on Ubuntu, to build the project run
-"pdflatex -synctex=1 -interaction=nonstopmode --shell-escape project.tex"
+> pdflatex -synctex=1 -interaction=nonstopmode --shell-escape project.tex
 
 > **_NOTE:_**  The --shell-escape is needed for the wc to automatically be placed on the title page

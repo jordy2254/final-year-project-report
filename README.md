@@ -15,7 +15,7 @@ be added at a later date.
 - [x] Chapter 4
 - [x] Chapter 5
 - [x] Chapter 6
-- [x] Chapter 7
+- [x] Chapter 7 (7.1.2 is still a WIP)
 - [x] Chapter 8 (Still needs it's appendecies added)
 - [ ] Chapter 9
 

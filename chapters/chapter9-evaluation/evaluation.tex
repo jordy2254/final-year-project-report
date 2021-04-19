@@ -1,34 +1,43 @@
 \section{Evaluation}
-The below chapter is going to evaluate the project as a whole unit covering a range of different scenarios in an overview and also highlighting what was learnt from the project.
-
 \subsection{What went well} %Project successes
-Starting with the successes of the project a wide variety went well the first key thing is a majority of the system was completed and the final result is an indoor mapping system with path finding albeit missing the location calculation it's still a great result for a project made in a short space of time. The final project has resulted in the base infrastructure and prototype for an indoor mapping solution that could plausibly be turned into a business especially if the location calculation problem is fixed at a later date. Both the web application and android application turned out well and looked like the initial designs and overall the result is excellent quality with a maintainable code base.
+Starting with the successes of the project a wide variety went well. The first key thing is a majority of the system was completed and the final result is an indoor mapping system with path finding albeit missing the location calculation it's still a great result for a project made in a short space of time. The final project has resulted in the base infrastructure and prototype for an indoor mapping solution that has the potential to be turned into a business in the future possibly as a Software as a Service (SaaS) application. The code base that has resulted from the project is maintainable and expandable due to the use of unit testing and the quality of code written. The final result of the android application and web application both look similar to their initial designs and functionality both are mostly complete.
 
 \subsection{The non-complete and why}
-There is a range of elements of the system that where not complete the main reason for this is the project being large and ambitious from the start some of the non-complete items where not done because of x whereas other's where done due to time constraints. The non complete requirements can be seen by looking at the appendix for the user stories, additionally another table exists in the appendix highlighting pass/fail on each requirement number.
+Some areas of system where not complete or failed there acceptance testing on the user story. The core reason for this is the limited time for the project. It was known at the beginning there'd be a lot of work for the project and it came as no surprise the scenarios that failed did. Comparing back to the requirements all core requirements have been met apart from those linked to the positioning accuracy due this area of the system being omitted.
 
-\subsection{System limitations} 
-Rectangle storage of rooms
-Walls are included in the size of a room
-No Z-co-ordinate only x,y. Floor's are detected by localised sensors which is untested due to environmental restraints.
+\subsection{System limitations}
+The key limitation of the system is the data structure used. This was a known issue from the beginning and decided appropriate due to the project being more of a prototype. The reason it's a limitation is due to rooms only allowing rectangular shapes and then subtracting more rectangles in order to generate the desired shape of the room. This means that it's not possible to have hexagonal shaped rooms. It seems the most efficient way of storing this is by storing the walls for a floor and then finding a method to label spaces, below is the proposed data structure for the changes. 
+
+\begin{center}
+	\includegraphics{example-image-a}
+\end{center}
+
+Depending when this is implemented a migration step could be written to turn the existing structure into the new structure. Algorithms have already been written to calculate the walls and polygon for a given room. As mentioned above the application could possibly be turned into a business if this was the case it's essential to look at existing applications for floor plans and do case studies around this area not only to find out if it's a good idea but also gain the knowledge for further potential system limitations so they can be avoided. It could be that if location calculation is worked on in the future that it may be feasible to interface with existing floor plan creation systems, again this could be a future case study.
 
 \subsection{What I'd do differently next time}
-Some extra design layouts to pre-vent reworking
-Some extra time spent on scoping, project left scope and got more complicated too quickly, meaning some work wasn't finished
-Don't jump straight into react/new technologies
+If I could go back and start the project from the beginning I would spend more time on the project planning and designs. The Rest API went through a range of iterations and changes and every change took that bit longer to implement, not only was this tedious it also wasted a lot of time that could have been avoided with the use of better designs or planning. leading on from this I'd also consider the similar sections for different areas of the system so they can be centralised to one language the key example of this was the calculation of room walls and polygons which was done locally on the device. It was then established for maintainability it was better to put it on the rest API and make it return them, this meant that bugs and other issues only needed to be fixed in one place, and also meant that in future no calculation is needed on a user's device.
+
+The planning for the project was a little vague the whole way through which left development very open. The main method of development was choosing a piece of functionality and working on it, however I changed between these tasks quite regularly. If I was to revisit the project from the beginning I'd choose to use a KahnBahn style system such as Trello, doing so would have meant changes could be linked exactly to a specific card doing so would of allowed a key to be added to feature branches and commit messages, generating a better git history. Doing this would have also lead to a clearer view of the remaining work of the project as well as the progress of the project. I also feel doing this would have improved workflow/time management and would have allowed the project to progress faster than it did. 
+
+As mentioned within the implementation \& development chapter, the web application was my first react project. As such it went through many iterations and recodes to improve as I learnt this wasted a lot of development time. If I could go back to the beginning of the project I would have spent more time learning the basic stuff of react rather than jumping straight in with the new technology. Doing this again would have saved time and allow the project to progress faster.
 
 \subsection{Future Work}
-Re-work the web app refactoring to use redux
+As mentioned above in the system limitations chapter the future of the application could be turned into a SaaS model business. If this is the case it's important to do a range of case studies on existing companies to evaluate the viability of this proposal. It was also noted in the same section that it may be worth interfacing with existing floor plan tools and focussing on the other elements of the system, this again will need a series of case studies.
+
+The code base for the web application although easy to read over time will become more complicated and difficult to work with due to the use of react components state. Later in development a library called Redux was found which is a state container for react which allows centralisation of any code. Implementing this library with the code base will make it more maintainable, expandable and readable in the future. As such if further work is to happen refactoring this will be one of the first tasks.
+
+Finally the key piece of future work is the indoor positioning it was a huge disappointment for me to find the hardware was the limiting factor grinding this area of the project to a halt, as such I will defiantly be revisiting this element of the system to further prove it's viability in the future. 
 
 \subsection{What I learnt} % Project Takeaway
-One key thing I learnt during the development of the project was about some more modern web development namely react and it's integration with API's. Before this project a significant portion of my dynamic website development was done via Java Servlets or done with PHP. Doing this project taught me a great deal about react to the extent where I can now make a basic application proficiently using react.
+The project was a learning experience at every stage something was being done to take away something new. The core of the web application side of the project allowed me to learn about more modern web development namely the react library. This project was a reasonably large project in react and allowed me to see how react applications scale and learn new method's of doing things within react in the future to make the application more scalable. This is an important lesson to learn for any language, library or framework and as such the learning experience from this will make my personal projects written with react more scalable and maintainable in the future.
 
-Another key element I learnt about was from the custom pixel based rendering system I wrote as mentioned in \citetemp 
+The android SDK is something I haven't used properly since I first started programming at 13. As such learning the updates to the API's and SDK's and learning the new way of doings things took some time. I'm now at a stage with the android SDK that I could comfortably create and application from scratch. I also took the time to learn about the draw cycles and event cycles of android to better understand how the components work and how the system works as a whole. This information was completely new and allowed me to learn key important information.
 
-React
-Things about 2 rendering pixel by pixel IE: Line drawing algorithms, Filled Polygon rendering etc.
-About JWT tokens
-About indoor positioning
-loads of other stuff
+Next is the pixel based rendering system that was written as a learning experience as mentioned in \citetemp. This was done souly to learn more details about how canvas API's possibly work, learning the range of algorithms to drawing/filling different shapes was an interesting addition to the project teaching me information I normally wouldn't come across. I now understand a range of algorithms for drawing a range of shapes and filling polygons. Optimisation of code was also a consideration for this due to the time limitations per frame and how small inefficiencies can add up when the same piece of code is ran multiple times per frame. As such I learnt to scrutinise the code I had written in a new way to make it performant without trading off the readability side of it.
+
+Finally although the implementation of indoor positioning wasn't possible the theory learnt is invaluable and the primilery research has provided a great insight into the theory for indoor positioning. As metioned above it's 
 
 \subsection{Conclusion}
+In conclusion the project over-all went incredibly well generating a good prototype indoor mapping solution. Over the course of the project lot's of new skills and knowledge where learnt either from the research such as the theory of location calculation, methods and technologies. Further knowledge was also learnt from areas of implementation such as the pixel based rendering system which taught me a lot about a range of 2d drawing algorithms.
+Further development in the future will consist of the Location tracking, and changes to the model to make the mapping more robust. The above section also highlighted the possibility of turning the project into a SaaS model business in the future.
+Finally if the project could be started again there would be a larger time spent of planning and design. Doing both of these better as mentioned above would have allowed the project to progress faster. It was proposed that using a KahnBahn Board would have been the best way of managing the remaining work and viewing the completed work it was also highlighted the benefit this would have had to the git versioning allowing the proper use of branches and commit messages linking to the cards.

@@ -7,8 +7,8 @@ References etc. are still not in place, however content is mostly there. There m
 be added at a later date.
 - [x] Chapter 1
 - [x] Chapter 2
-- [ ] Chapter 3
-    - [ ] Chapter 3.1
+- [x] Chapter 3
+    - [x] Chapter 3.1 (Initial draft complete)
     - [x] Chapter 3.2
     - [x] Chapter 3.3
     - [x] Chapter 3.4

@@ -4,20 +4,21 @@ The following chapter is going to cover the design process for the development o
 \subimport{./userstories/}{userstories.tex}
 
 \subsection{Decided technologies}
-Programming languages and libraries are very varied and people have many opinions on these. General a chosen technology, library or language comes down to the developers preference/what they most comfortable in. Several languages have been decided for the final product.
+Programming languages and libraries are very varied and people have many opinions on these. In general a chosen technology, library or language comes down to the developers preference/what they most comfortable in. Several languages have been decided for the final product and the below section is highlighting these along with what influenced the decision.
 
 \subsubsection{Security}
 Many people these days like SSO systems allowing them to sign in from their social media accounts. For this reason an SSO provider will be used in order to protect the REST API and web application.
 
 \subsubsection{Rest API}
-For the rest API, it has been that Golang will be used. This is because it's a good use of goes modular approach, and because the project is quite light using something like \& spring is overkill for the scenario. Golang also has comparable performance to Java and is expandable, and is slowly becoming a more used languages due to it's speed and simplicity.
+The rest API is going to be developed using Golang, Golang support module development, is easy to work with and has a performance between Java and C. The author has an interest in this language and wants to reinforce in it and feels this is an excellent use case for this, and will allow expandability of the application in the future.
 
 \subsubsection{Web Application}
-The web Application will use React to develop it. This is because the author has an interest in keeping up with current popular technologies and feels this would be a good chance to implement the library and develop a progressive web app.
+The web application will be written within Typescript using the react libary. The main influencing decision for this is the author's interest in keeping up with current popular technologies and feels this would be a good chance to implement the library and develop a progressive web app, and learn about the react libary.
 
 \subsubsection{Android Application}
 It has been decided the android application will be written using the traditional Java method as opposed to the current default language of Kotlin, the reason for this is because the author is more familiar with Java and is already using new technologies for the web application. Time limitations mean it's not practical to learn Kotlin in addition to the other technologies for this project rendering it out of scope.
 
+\pagebreak
 \subsection{Architecture overview}
 With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented.
 
@@ -32,7 +33,7 @@ The above diagram contains all the key information required to create the initia
 Finally the above diagram also highlights some of the design considerations that where made to make development of the project faster, the first of these was to store rooms as rectangles with overlays as another rectangle, this achieves a more simplistic data structure and types to work with in order to make building the prototype faster. Looking at existing indoor maps of a range of locations such as UWE on google maps, shows that most rooms within a building are rectangular with indents cut out of them, as such a majority of situations will be covered by this data structure,as this is a prototype small limitations are out of scope however if this was to become a business based implementation changes would be required to cover certain edge cases such as the hexagon at UWE, this being said the system will still be capable of demonstrating it's potential within the industry as a prototype.
 
 \subsubsection{Other Data storage}
-Using a database to store data is great for quick access and high yield options however creating a database to store a handful of maps on the android device will require a more complicated infrastructure with no real benefit as storage won't be accessed or read in the same way because the android application only needs to read map data, and write/update map data from the API, where a synchronisation will provide the JSON for the whole map overwriting any existing data. For this reason maps received from the rest API will be serialised into JSON files on the device. 
+The rest API will feature the data structure and be connected to a database as above, to allow for quick access and query of data. This isn't needed for the android application and as such the data returned from the rest API will be stored as JSON files on the device. This allows quick serialisation/de-serialisation of data whilst maintaining a simple storage method. This is justified by the fact that the map data will not need to be queried unless already loaded into memory. Using a database would also complicate the re-synchronisation of changed map data.
 
 \newpage
 \subsection{REST API Design}

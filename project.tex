@@ -4,6 +4,7 @@
 \usepackage[margin=1in,includefoot]{geometry}
 \usepackage{import}
 \usepackage{pdflscape}
+\usepackage[toc,page]{appendix}
 
 \usepackage[backend=biber, style=authoryear, maxnames=999, maxcitenames=3, firstinits=true, urldate=long]{biblatex}
 \usepackage{xcolor}
@@ -64,5 +65,6 @@
 	
 	\nocite{*}
 	\printbibliography
-
+	\pagebreak
+	\import{appendicies/}{appendicies.tex}
 \end{document}

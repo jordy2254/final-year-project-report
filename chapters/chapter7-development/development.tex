@@ -3,23 +3,24 @@ The following chapter will cover interesting problems that arose during developm
 
 \subsection{Encountered issues}
 \subsubsection{Room Polygon calculation}
-As defined in the design, the rooms will be stored as overlapping rectangles and then later drawn to the screen. The process of calculating the walls and polygon for this was a lot more complicated than initially anticipated. Various google searches for this problem returned no results as such a custom algorithm was designed to achieve the goal. Below is the information on the basic overview of how this algorithm works.\\
+As defined in the design, the rooms will be stored as overlapping rectangles and then later drawn to the screen. The process of calculating the walls and polygon for this was a lot more complicated than initially anticipated. Intensive google searches for this problem returned no results as such a custom algorithm was designed to achieve the goal. Below is the information on the basic overview of how this algorithm works.\\
 
-There's several key steps for generating the polygon, the first of these steps is calculating the walls (excluding entrances) that exist for the given shape, this starts out as 2 separate lists of walls one for the room and one for all the indents. after this the room walls are adjusted to account for these, this is done by checking for a collision walls and editing the current points of the room wall. There are 3 different states that can occur when comparing the wall with the overlapping area, these are:
+There's several key steps for generating the polygon, the first of these steps is calculating the walls (excluding entrances) that exist for the given room, this starts out as two separate lists of walls one for the room and one for all the indents. A function is called to cutout and merge the two separate lists. The first step is ordering the points of left to right and top to bottom depending on the orientation of the wall. After this has been done the two lists will be looped and checked for overlap, on an overlap can occur several different scenarios of which are listed below.
+
+after this the room walls are adjusted to account for these, this is done by checking for a collision walls and editing the current points of the room wall. There are two conditions that are both applied to wall making 3 overall cases below are the conditions and what they do, followed by digram demonstrating the resulting three cases.
 \begin{itemize}
 	\item Indent starts at the same point as the wall (Original wall is removed)
 	\item Indent starts after the start point of the wall (Original wall is adjusted to meet the start point)
 	\item Indent ends before the end point of the wall (A new wall is added to cover the extra area)
 	\item Indent ends at the same point as the wall (No change necessary)	
 \end{itemize}
-Below is a visualisation of how the algorithm works for each state and the final result.
 \begin{center}
-	\includegraphics{example-image-b}
+	\includegraphics[width=\linewidth]{images/implementation/wallconditions.png}
 \end{center}
 
-Once this has been done depending if the actual walls or polygon is generated depends on what happens, if the actual walls are being done, and further cut-outs are then made on the whole set based on the same logic above and then that set is returned. If however the polygon is being generated some further processing is needed to ensure the start point of a wall matches an end point of another, this is done by looping the data and flipping the points based on a parity where an even parity (end points -> matching start point) is desired. Once this has been done the points can be followed around generation a list of 2d points that can be used to generate a 2d polygon.
+Following the calculation there is one of two paths to follow depending on what's being generated. Given that the walls are being generated the process will be repeated on further cut-outs such as entrances and then returned. If however, the rooms polygon is being calculated the resulting walls will be looped from the wall, the opposite point (walls are pairs of points(A,B)) will then be matched to either point of another wall. The allows the polygon to be calculated all the way round as there should be an even number of walls on each point.
 
-Further work in the future would allow one of many triangulation methods to be used in order to generate a 2d polygon for OpenGL, further expansion could also turn this so that walls are added to the outside as a further polygon so that a 3d projection can be drawn, however both of these are out of scope for the project currently.
+Further work in the future could allow one of many triangulation methods to be used in order to generate a 2d polygon for OpenGL, further expansion could also turn this so that walls are added to the outside as a further polygon so that a 3d projection can be drawn, however both of these are out of scope for the project currently.
 
 
 \subsubsection{Positioning System/location Calculation}

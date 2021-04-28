@@ -21,15 +21,24 @@ It has been decided the android application will be written using the traditiona
 
 \pagebreak
 \subsection{Architecture overview}
-With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented.
-
-\includegraphics[width=\linewidth]{./images/designs/ArchitectureOverview.png}
+With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram (see figure \ref{fig:architectureov}) has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented.
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{./images/designs/ArchitectureOverview.png}\\
+	\caption{Architecture Overview}
+	\label{fig:architectureov}
+\end{figure}
 
 \subsection{Data Storage \& Data Structure}
-Before development of any new functionality or system it's important to consider the data that's required. The format and quality of the data structure is important the success of a system and is also important to ensure maintainability and expansion is possible in the future. One common storage structure for data is a relational database, this allows quick and easy access and filtering of the data within and is the industry standard. A key method of designing these databases is with an entity relationship diagram (ERD), below is and ERD for the decided data structure for the project.
+Before development of any new functionality or system it's important to consider the data that's required. The format and quality of the data structure is important the success of a system and is also important to ensure maintainability and expansion is possible in the future. One common storage structure for data is a relational database, this allows quick and easy access and filtering of the data within and is the industry standard. A key method of designing these databases is with an entity relationship diagram (ERD) see figure \ref{fig:erd}.
 
-\includegraphics[width=\linewidth]{./images/designs/erddetailed.png}\\
-The above diagram contains all the key information required to create the initial database for the project, in addition it also gives and insight for all the data needed in the base model for anything that uses this data from the API, as such will serve as a base for creating the Java classes and Golang structs. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.9\linewidth]{./images/designs/erddetailed.png}\\
+	\caption{Entity relationship diagram}
+	\label{fig:erd}
+\end{figure}
+
+Figure \ref{fig:erd} contains all the key information required to create the initial database for the project, in addition it also gives and insight for all the data needed in the base model for anything that uses this data from the API, as such will serve as a base for creating the Java classes and Golang structs. 
 
 Finally the above diagram also highlights some of the design considerations that where made to make development of the project faster, the first of these was to store rooms as rectangles with overlays as another rectangle, this achieves a more simplistic data structure and types to work with in order to make building the prototype faster. Looking at existing indoor maps of a range of locations such as UWE on google maps, shows that most rooms within a building are rectangular with indents cut out of them, as such a majority of situations will be covered by this data structure,as this is a prototype small limitations are out of scope however if this was to become a business based implementation changes would be required to cover certain edge cases such as the hexagon at UWE, this being said the system will still be capable of demonstrating it's potential within the industry as a prototype.
 
@@ -60,48 +69,88 @@ There exists a range of map applications already implemented including Google ma
 
 \pagebreak
 \subsubsection{Android Application}
-Below is a range of designs for the android application for the large parts of functionality. These designs are more detailed than the web application due to there being less "layers" of UI. The main functionality required for the android app is the ability to select maps, search, move around and set points. The below designs cover all of those requirements \\
-\\\underline{Map Selection}
-\begin{center}
-	\fbox{\includegraphics[width={0.25\linewidth}]{./images/designs/ui/android/MapSelection.png}}
-	\fbox{\includegraphics[width={0.25\linewidth}]{./images/designs/ui/android/MapSelectionWithmaps.png}}
-\end{center}
+Figure \ref{fig:mapselection} contains the two main states for the map selection screen of the android application, figure \ref{fig:mapselnomap} contains the view if the user has no synchronised map on their device whereas figure \ref{fig:mapselwithmap} contains the view if the user has maps synchronised. It can be noted there is a plus button to synchronise a new map and a filter box to search the synchronised maps for if the user has many, the designed for both of these can be found within figure \ref{fig:mapselectionpopup}.\\
+\begin{figure}[h]
+	\centering
+\begin{subfigure}{.5\textwidth}
+	\centering
+	\fbox{\includegraphics[width=.75\linewidth]{./images/designs/ui/android/MapSelection.png}}
+	\caption{Map selection screen when user has no maps}
+	\label{fig:mapselnomap}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+	\centering
+	\fbox{\includegraphics[width=.75\linewidth]{./images/designs/ui/android/MapSelectionWithmaps.png}}
+	\caption{Map selection screen when user has maps}
+	\label{fig:mapselwithmap}
+\end{subfigure}
+\caption{Map Selection screen}
+\label{fig:mapselection}
+\end{figure}
+\pagebreak
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[t]{.5\textwidth}
+		\centering
+		\fbox{\includegraphics[width=1\linewidth]{./images/designs/ui/android/AddMap.png}}
+		\label{fig:mapselpopupsync}
+	\end{subfigure}%
+	\begin{subfigure}[t]{.5\textwidth}
+		\centering
+		\fbox{\includegraphics[width=.4\linewidth]{./images/designs/ui/android/mapFilterOveralay.png}}
+		\label{fig:mapselpopupfilter}
+	\end{subfigure}
+	\caption{Map Selection screen popups}
+	\label{fig:mapselectionpopup}
+\end{figure}
 
-The above two views show the basic map selection screen presented when the activity starts. The first screen show's the view if the user has synchronised no maps as highlighted in the prompt the user can add new maps by clicking the plus button on the top menu bar. The view for the new map synchronisation can be viewed in the below screenshot.\\
-
-The second view displays to the user the synchronised maps. This view has several extra options, as can be seen by the icons each map has an independent delete and resynchronise button. Additionally the user has the option to filter their synchronised maps which will bring up a filters panel. Again the design for the filters pane can be view below.
-
-\begin{center}
-	\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/AddMap.png}}
-	\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/mapFilterOveralay.png}}
-\end{center}
-
-\underline{Location}
-\begin{center}
+The second key activity for the android app is the positioning activity figure \ref{fig:locationactivity} contains the base view for what this area of the application looks like. It should be noted here there is a hamburger menu overlay see figure \ref{fig:locationpopupsearch}. In addition, to this there is a route options popup the design of which can be seen within \ref{fig:locationpopupoptions}. As with the previous set of designs these cover all the basis for the requirements set out for the application.
+\begin{figure}[h]
+	\centering
 	\fbox{\includegraphics[width={0.3\linewidth}]{./images/designs/ui/android/Map.png}}
-\end{center}
- The above image demonstrates the base for the actual location/map view section of the software. The design features a hamburger menu that can expanded to detail the start and end location. By default if the user is found to be within the proximity of the maps sensors the location and direction will be presented on the map. The design features all the functionality setout within the requirements, allowing the use of directions, searching, changing route options (Design for overlay below). 
-
+	\caption{Main screen of location activity}
+	\label{fig:locationactivity}
+\end{figure}
 Sub Screens\\
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/RouteOptions.png}}\\
-\fbox{\includegraphics[height=6cm]{./images/designs/ui/android/RouteSearch.png}}\\
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[h]{.5\textwidth}
+		\centering
+		\fbox{\includegraphics[width=.75\textwidth]{./images/designs/ui/android/RouteOptions.png}}\\
+		\caption{}
+		\label{fig:locationpopupoptions}
+	\end{subfigure}%
+	\begin{subfigure}[h]{.5\textwidth}
+		\centering
+		\fbox{\includegraphics[width=.75\textwidth]{./images/designs/ui/android/RouteSearch.png}}\\
+		\caption{}
+		\label{fig:locationpopupsearch}
+	\end{subfigure}
+	\caption{Location popups/overlays}
+	\label{fig:locationpopup}
+\end{figure}
 
+
+\pagebreak
 \subsubsection{Web Application}
-The web application has 2 core states, the first is the map selection screen which can be seen below:\\
-\fbox{\includegraphics[width=\linewidth]{./images/designs/ui/web/MapSelection.png}}
+As with the android application the web application has 2 core states, the first is the map selection screen see figure \ref{fig:webappmapsel} which contains the design for this screen. What cannot be seen on this design is when using this page hovering over a map option will present a selection of options including rename and delete located on the top right of the container.\\
+\begin{figure}[h]
+	\centering
+	\fbox{\includegraphics[width=\linewidth]{./images/designs/ui/web/MapSelection.png}}
+	\caption{Map selection screen}
+	\label{fig:webappmapsel}
+\end{figure}
 
-As can be seen the design features 3 options for creating a map, the first is a blank empty map, the second is from an exported json file from an existing map, and the third is from a base template. It's important to ensure the system supports a templating system for the future so basic maps can be created from these templates.
+The second state see figure \ref{fig:webappmapeditor} contains the design for the core map editor. Some key elements to note on this design is the tool box on the top left of the canvas which allows interaction with the canvas to do different tasks. The design also features a hierarchy based component, this component is a list selection for the levels of the data structure allowing addition, editing and deleting of the element at each level. Finally there is a QR generation button which will generate a QR code to scan by an android device to synchronise the map to the device.
+\begin{figure}[h]
+	\centering
+	\fbox{\includegraphics[width=\linewidth]{./images/designs/ui/web/MapEditor.png}}
+	\caption{Map selection screen}
+	\label{fig:webappmapeditor}
+\end{figure}
 
-
-The final key component of this design is the selection view for exiting maps the user has, hovering over one of these will allow renaming \& deleting from buttons on the top right, clicking anywhere else will load the map.
-
-\fbox{\includegraphics[width=\linewidth]{./images/designs/ui/web/MapEditor.png}}
-The second state can be seen above and is a basic design for the editing portion of the web app, the web app will feature canvas rendering of the existing map, and will feature a series of tools to move the map, select rooms, edit path and more. In addition to these tools the right hand side will hold any key settings in a hierarchy view where a building can be selected which displays the options for a building plus selection list for child components. 
-
-The map name is editable by clicking on the text for the map name. QR generation is also a feature, this is to match \ref{android:sync} where the android device can scan a bar code that will automatically boot the app and synchronise the map.
-
-Designs for the Dashboard as defined in requirement \ref{web:dashboard} have been omitted due to having a priority of could. The designs for this element will be visited if there is time in the future to complete this requirement
-
+Finally designs for the Dashboard as defined in requirement \ref{web:dashboard} have been omitted due to having a priority of could. The designs for this element will be visited if there is time in the future to complete this requirement
+\pagebreak
 \subsection{Important design considerations}
 As with any system making it generic and expandable is something to consider from an early stage. Not doing this can be detrimental to the long term standing of the code making it more difficult to expand and improve the application with time.
 

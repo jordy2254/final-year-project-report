@@ -14,9 +14,12 @@ after this the room walls are adjusted to account for these, this is done by che
 	\item Indent ends before the end point of the wall (A new wall is added to cover the extra area)
 	\item Indent ends at the same point as the wall (No change necessary)	
 \end{itemize}
-\begin{center}
+\begin{figure}[h]
+	\centering
 	\includegraphics[width=\linewidth]{images/implementation/wallconditions.png}
-\end{center}
+	\caption{Wall cases}
+	\label{fig:wallcases}
+\end{figure}
 
 Following the calculation there is one of two paths to follow depending on what's being generated. Given that the walls are being generated the process will be repeated on further cut-outs such as entrances and then returned. If however, the rooms polygon is being calculated the resulting walls will be looped from the wall, the opposite point (walls are pairs of points(A,B)) will then be matched to either point of another wall. The allows the polygon to be calculated all the way round as there should be an even number of walls on each point.
 

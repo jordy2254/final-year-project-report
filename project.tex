@@ -5,7 +5,7 @@
 \usepackage{import}
 \usepackage{pdflscape}
 \usepackage[toc,page]{appendix}
-
+\usepackage{hyperref}
 \usepackage[backend=biber, style=authoryear, maxnames=999, maxcitenames=3, firstinits=true, urldate=long]{biblatex}
 \usepackage{xcolor}
 \setlength{\parindent}{0pt}
@@ -38,12 +38,29 @@
 }
 \makeatother
 
+\newenvironment{projectlinks} {\renewcommand\abstractname{Project Links}\begin{abstract}} {\end{abstract}}
+
+\hypersetup{
+	hidelinks=true,
+}
+
 \begin{document}
 	\import{./}{titlepage.tex}
 	\thispagestyle{empty}
 	\begin{abstract}
 	\noindent Indoor positioning is still not a common occurrence to see within large business locations such as university campuses. Considering the applications of indoor positioning systems and the advantage they could provide this is surprising. The most apparent reason for this is due to the high cost and complexity these systems currently occur for businesses wanting to install them. This paper is going to research the technologies required for an indoor positioning system and aims to implement a generic and easily adaptable system that could make positioning systems more affordable or easier to implement. The final aim of this project is to have an accurate indoor positioning system that can be used by a user on their own mobile device in order navigate around the premises in real time. 
 	\end{abstract}
+	\begin{projectlinks}
+	\noindent This project has created a range of implementation artefacts, all of the code which was implemented from the research and throughout the development can be found using the below links.\\
+	\begin{tabular}{p{0.25\linewidth} p{0.75\textwidth}}
+		
+		Rest API & \url{https://github.com/jordy2254/indoormaprestapi}\\
+		Android application & \url{https://github.com/jordy2254/AndroidIndoorPositioning}\\
+		Web application& \url{https://github.com/jordy2254/mapeditor}\\
+	\end{tabular}
+
+	
+	\end{projectlinks}
 	\pagebreak
 	\tableofcontents
 	\thispagestyle{empty}

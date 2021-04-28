@@ -1,27 +1,27 @@
 \section{Design}
-The following chapter is going to cover the design process for the development of the application. By the end of this design chapter it will be clear of the chosen technologies and a high level knowledge of how the system will function will be understood. As part of the design existing map applications such as Google maps \& waze where looked at. Looking at existing map applications allowed the designs to be inspired from different sections and provide and idea of how these systems work, one great side effect of using these systems as inspiration is that it's hoped the system will be clear how to use by user's that have expierence with them.
+The following chapter is going to cover the design process for the development of the application. By the end of this design chapter it will be clear of the chosen technologies. Additionally, a high level understanding of how the system will function will be achieved. As part of the design existing map applications such as Google Maps \& Waze were looked at. Looking at existing map applications allowed the designs to be inspired from different sections and provide an idea of how these systems work. One great side effect of using these systems as inspiration is that it's hoped the system will be clear how to use by user's that have experience with them.
 
 \subsection{User stories}
-User stories are an excellent way of creating more detailed requirements for development. The user stories found within appendix \ref{appendix:userstories} cover all of the requirements laid out, and also contain a set of user stories each. The implementation of acceptance testing on each user story will provide the basis for testing of the system.
+User stories are an excellent way of creating more detailed requirements for development. The user stories found within appendix \ref{appendix:userstories} cover all of the requirements laid out and also contain a set of user stories each. The implementation of acceptance testing on each user story will provide the basis for testing of the system.
 
 \subsection{Decided technologies}
-Programming languages and libraries are very varied and people have many opinions on these. In general a chosen technology, library or language comes down to the developers preference/what they most comfortable in. Several languages have been decided for the final product and the below section is highlighting these along with what influenced the decision.
+Programming languages and libraries are very varied and people have many opinions on these. In general a chosen technology, library or language comes down to the developers preference/what they are most comfortable in. Several languages have been decided for the final product and the below section highlights these along with what influenced the decision.
 
 \subsubsection{Security}
-Many people these days like SSO systems allowing them to sign in from their social media accounts, this is potentially down to a range of reasons such as trust in larger companies and ease of use. For this reason an SSO provider will be used in order to protect the REST API and web application.
+Many people these days like SSO (Single Sign on) systems allowing them to sign in from their social media accounts, this is potentially down to a range of reasons such as trust in larger companies and ease of use. For this reason an SSO provider will be used in order to protect the REST API and web application.
 
 \subsubsection{Rest API}
-The rest API is going to be developed using Golang, Golang supports modular development, is easy to work with and has a comparable performance between Java and C. The author has an interest in this language and wants to re-enforce skills within this language and feels this is an excellent use case.
+The rest API is going to be developed using Golang. Golang supports modular development, is easy to work with and has a comparable performance between Java and C. The author has an interest in this language and wants to re-enforce skills within this language and feels this is an excellent use case.
 
 \subsubsection{Web Application}
-The web application will be written within Typescript using the react libary. The main influencing decision for this is the author's interest in keeping up with current popular technologies and feels this would be a good chance to implement the library and develop a progressive web app, and learn about the react libary.
+The web application will be written within Typescript using the React libary. The main influencing decision for this is the author's interest in keeping up with current popular technologies and feels this would be a good chance to implement the library and develop a progressive web app and learn about the React library.
 
 \subsubsection{Android Application}
-It has been decided the android application will be written using the traditional Java method as opposed to the current default language of Kotlin, the reason for this is because the author is more familiar with Java and is already using new technologies for the web application. Time limitations mean it's not practical to learn Kotlin in addition to the other technologies for this project rendering it out of scope.
+It has been decided the Android application will be written using the traditional Java method as opposed to the current default language of Kotlin. The reason for this is because the author is more familiar with Java and is already using new technologies for the web application. Time limitations mean it's not practical to learn Kotlin in addition to the other technologies for this project rendering it out of scope.
 
 \pagebreak
 \subsection{Architecture overview}
-With the system being modular and containing several key parts that need to function appropriately together and architecture overview diagram (see figure \ref{fig:architectureov}) has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented.
+With the system being modular and containing several key parts that need to function appropriately together an architecture overview diagram (see figure \ref{fig:architectureov}) has been generated to show how the system intends to work. This architecture overview is useful for understanding the base system that has been implemented.
 \begin{figure}[h]
 	\includegraphics[width=\linewidth]{./images/designs/ArchitectureOverview.png}\\
 	\caption{Architecture Overview}
@@ -29,7 +29,7 @@ With the system being modular and containing several key parts that need to func
 \end{figure}
 
 \subsection{Data Storage \& Data Structure}
-Before development of any new functionality or system it's important to consider the data that's required. The format and quality of the data structure is important the success of a system and is also important to ensure maintainability and expansion is possible in the future. One common storage structure for data is a relational database, this allows quick and easy access and filtering of the data within and is the industry standard. A key method of designing these databases is with an entity relationship diagram (ERD) see figure \ref{fig:erd}.
+Before development of any new functionality or system it's important to consider the data that's required. The format and quality of the data structure is important to the success, maintainability and expansion of the system in the future. One common storage structure for data is a relational database, this allows quick and easy access and filtering of the data within and is the industry standard. A key method of designing these databases is with an entity relationship diagram (ERD) see figure \ref{fig:erd}.
 
 \begin{figure}[h]
 	\centering
@@ -38,18 +38,18 @@ Before development of any new functionality or system it's important to consider
 	\label{fig:erd}
 \end{figure}
 
-Figure \ref{fig:erd} contains all the key information required to create the initial database for the project, in addition it also gives and insight for all the data needed in the base model for anything that uses this data from the API, as such will serve as a base for creating the Java classes and Golang structs. 
+Figure \ref{fig:erd} contains all the key information required to create the initial database for the project, in addition it also gives an insight for all the data needed in the base model for anything that uses this data from the API, as such will serve as a base for creating the Java classes and Golang Structs. 
 
-Finally the above diagram also highlights some of the design considerations that where made to make development of the project faster, the first of these was to store rooms as rectangles with overlays as another rectangle, this achieves a more simplistic data structure and types to work with in order to make building the prototype faster. Looking at existing indoor maps of a range of locations such as UWE on google maps, shows that most rooms within a building are rectangular with indents cut out of them, as such a majority of situations will be covered by this data structure,as this is a prototype small limitations are out of scope. However, if this was to become a business based implementation changes would be required to cover certain edge cases such as the hexagon at UWE, this being said the system will still be capable of demonstrating it's potential within the industry as a prototype.
+Finally the above diagram also highlights some of the design considerations that were made to make development of the project faster, the first of these was to store rooms as rectangles with overlays as another rectangle, this achieves a more simplistic data structure and types to work with in order to make building the prototype faster. Looking at existing indoor maps of a range of locations such as UWE on Google Maps, shows that most rooms within a building are rectangular with indents cut out of them. As such, a majority of situations will be covered by this data structure,as this is a prototype small limitations are out of scope. However, if this was to become a business based implementation changes would be required to cover certain edge cases such as the hexagon at UWE, this being said the system will still be capable of demonstrating its potential within the industry as a prototype.
 
 \subsubsection{Other Data storage}
 The rest API will feature the data structure and be connected to a database as above, to allow for quick access and query of data. This isn't needed for the android application and as such the data returned from the rest API will be stored as JSON files on the device. This allows quick serialisation/de-serialisation of data whilst maintaining a simple storage method. This is justified by the fact that the map data will not need to be queried unless already loaded into memory. Using a database would also complicate the re-synchronisation of changed map data.
 
 \newpage
 \subsection{REST API Design}
-With the data structure defined above, the rest API for this project will perform mostly CRUD operations protected using Auth0, as such no direct design will be done for the rest API, the aim of this section is to give a basic overview of how the rest API will function.
+With the data structure defined above, the rest API for this project will perform mostly CRUD operations protected using Auth0 (SSO Provider), as such no direct design will be done for the rest API. The aim of this section is to give a basic overview of how the rest API will function.
 
-Each data layer will also contain the heirarchial format IE: room update URL would be:\\ /map/buildings/rooms/\{id\}. Each piece of data will contain a route to create, retrieve, update \& delete the piece of data. All routes will be protected via a JWT token which will be supplied by the react application, example URL's and methods for the map itself can be viewed below.
+Each data layer will also contain the hierarchical format IE: room update URL would be:\\ /map/buildings/rooms/\{id\}. Each piece of data will contain a route to create, retrieve, update \& delete the piece of data. All routes will be protected via a JWT token which will be supplied by the React application, example URL's and methods for the map itself can be viewed below.
 
 \begin{longtable}{| p{0.2\linewidth} | p{0.1\linewidth} | p{0.7\linewidth}|}
 	\hline
@@ -61,11 +61,11 @@ Each data layer will also contain the heirarchial format IE: room update URL wou
 	
 \end{longtable}
 
-An additional route of just /maps will exist to retrieve top level map data for all maps of the logged in user. This route will have a HTTP method of GET and will take no URL parameters or information, it will however be protected by a JWT token.
-Finally one last route will exist ontop of the map which will have the URL of /map/sync which will be used by the android application to syncronise new maps, it will be a post function and will contain formatted json of the mapID and password required, this route will not require any middleware and will be open to use.
+An additional route of "/maps" will exist to retrieve top level map data for all maps of the logged in user. This route will have a HTTP method of GET and will take no URL parameters or information, it will however be protected by a JWT token.
+Finally one last route will exist ontop of the map which will have the URL of /map/sync which will be used by the android application to syncronise new maps. It will be a post function and will contain formatted JSON of the mapID and password required, this route will not require any middleware and will be open to use.
 
 \subsection{UI Designs}
-There exists a range of map applications already implemented including Google maps, Waze \& apple Maps, with large companies having the budget to design optimum and efficient UI's the designs of the product will be heavily influenced by these applications. Both the android application and web application will have there designs as images, and have an explanation of any functionality/links that are not clear from the designs. All designs have been carefully considered to ensure a complete fulfilment of the requirements.
+There exists a range of map applications already implemented including Google Maps, Waze \& Apple Maps, with large companies having the budget to design optimum and efficient UI's, the designs of the product will be heavily influenced by these applications. Both the Android application and web application will have their designs as images and have an explanation of any functionality/links that are not clear from the designs. All designs have been carefully considered to ensure a complete fulfilment of the requirements.
 
 \pagebreak
 \subsubsection{Android Application}
@@ -104,14 +104,13 @@ Figure \ref{fig:mapselection} contains the two main states for the map selection
 	\label{fig:mapselectionpopup}
 \end{figure}
 
-The second key activity for the android app is the positioning activity figure \ref{fig:locationactivity} contains the base view for what this area of the application looks like. It should be noted here there is a hamburger menu overlay see figure \ref{fig:locationpopupsearch}. In addition, to this there is a route options popup the design of which can be seen within \ref{fig:locationpopupoptions}. As with the previous set of designs these cover all the basis for the requirements set out for the application.
+The second key activity for the android app is the positioning activity figure \ref{fig:locationactivity} which contains the base view for what this area of the application looks like. It should be noted here there is a hamburger menu overlay see figure \ref{fig:locationpopupsearch}. In addition, to this there is a route options popup the design of which can be seen within \ref{fig:locationpopupoptions}. As with the previous set of designs these cover all the basis for the requirements set out for the application.
 \begin{figure}[h]
 	\centering
 	\fbox{\includegraphics[width={0.3\linewidth}]{./images/designs/ui/android/Map.png}}
 	\caption{Main screen of location activity}
 	\label{fig:locationactivity}
 \end{figure}
-Sub Screens\\
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[h]{.5\textwidth}
@@ -133,9 +132,9 @@ Sub Screens\\
 
 \pagebreak
 \subsubsection{Web Application}
-As with the android application the web application has 2 core states, the first is the map selection screen see figure \ref{fig:webappmapsel} which contains the design for this screen. What cannot be seen on this design is when using this page hovering over a map option will present a selection of options including rename and delete located on the top right of the container.\\
+As with the Android application the web application has two core states. The first is the map selection screen see figure \ref{fig:webappmapsel} which contains the design for this screen. What cannot be seen on this design is when using this page, hovering over a map option will present a selection of options including rename and delete located on the top right of the container.\\
 
-The second state see figure \ref{fig:webappmapeditor} contains the design for the core map editor. Some key elements to note on this design is the tool box on the top left of the canvas which allows interaction with the canvas to do different tasks. The design also features a hierarchy based component, this component is a list selection for the levels of the data structure allowing addition, editing and deleting of the element at each level. Finally there is a QR generation button which will generate a QR code to scan by an android device to synchronise the map to the device.
+The second state see figure \ref{fig:webappmapeditor} contains the design for the core map editor. Some key elements to note on this design is the tool box on the top left of the canvas which allows interaction with the canvas to do different tasks. The design also features a hierarchy based component. This component is a list selection for the levels of the data structure allowing addition, editing and deleting of the element at each level. Finally there is a QR generation button which will generate a QR code to scan by an Android device to synchronise the map to the device.
 
 \begin{figure}[h]
 	\centering
@@ -150,11 +149,11 @@ The second state see figure \ref{fig:webappmapeditor} contains the design for th
 	\label{fig:webappmapeditor}
 \end{figure}
 
-Finally designs for the Dashboard as defined in requirement \ref{web:dashboard} have been omitted due to having a priority of could. The designs for this element will be visited if there is time in the future to complete this requirement
+Finally the designs for the Dashboard as defined in requirement \ref{web:dashboard} have been omitted due to having a priority of "could". The designs for this element will be visited if there is time in the future to complete this requirement
 \pagebreak
 \subsection{Important design considerations}
 As with any system making it generic and expandable is something to consider from an early stage, not doing this can be detrimental to the long term standing of the code making it more difficult to expand and improve the application with time.
 
-One key area for expandability was found within the research where by UWB appears to be the future of indoor positioning systems due it traction building from addition of smart phones, IOT and other devices. As such, Bluetooth is the optimal solution for the projects aims and objectives currently although that will probably change in the future. For this reason, it's important to consider the integration of Bluetooth and potentially other sensor's into the positioning calculation. Leading from this several interfaces will exist on the implementation, the lowest interface will contain a list of scan and distance services, passing all sensor ID's to them so results can be filtered. The idea of the scan and distance service is to return a set of formatted data back from it's implementation, this means any sensor can be used, and calculation of distance can be changed per sensor type. One the location service has ran these functions for all the different sensors the system can then use this data to calculate the location as identified within the research.
+One key area for expandability was found within the research where by UWB appears to be the future of indoor positioning systems due to its traction building from addition of smart phones, IOT and other devices. As such, Bluetooth is the optimal solution for the projects aims and objectives currently although that will probably change in the future. For this reason, it's important to consider the integration of Bluetooth and potentially other sensors into the positioning calculation. Leading from this several interfaces will exist on the implementation, the lowest interface will contain a list of scan and distance services, passing all sensor ID's to them so results can be filtered. The idea of the scan and distance service is to return a set of formatted data back from its implementation. This means any sensor can be used and calculation of distance can be changed per sensor type. Once the location service has ran these functions for all the different sensors the system can then use this data to calculate the location as identified within the research.
 
 Another important design approach is to keep the code as independent from the system as possible, doing so will allow the ability to create a library that is used in the future. It also means that the system is easier to maintain and can be ported to other systems that run the JDK with minimal work. Finally it's important to ensure a clear distinction between the view and logic, implementing a new UI shouldn't interfere with any core system logic, methods exist for this already as such a Model View Controller approach will be used for the whole system this again ensures expandability and ease of development in the future.

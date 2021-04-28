@@ -28,8 +28,7 @@
 %Bib stuff
 \import{./}{referencing-preamble.tex}
 \addbibresource{bibliography.bib}
-%
-\newcommand{\citetemp}{(REF)}
+
 \newcommand{\appendixtemp}{(APPENDIX)}
 
 \newcounter{requirementcounter}
@@ -45,7 +44,7 @@
 	\import{./}{titlepage.tex}
 	\thispagestyle{empty}
 	\begin{abstract}
-	\noindent Indoor positioning is still not a common occurrence to see within large business locations such as university campuses. Considering the applications of indoor positioning systems and the advantage they could provide this is surprising. The most apparent reason for this is due to the high cost and complexity these systems currently occur for businesses wanting to install them. This paper is going to research the technologies required for an indoor positioning system and aims to implement a generic and easily adaptable system that could make positioning systems more affordable or easier to implement. The final aim of this project is to have an accurate indoor positioning system that can be used by an entity on their own mobile device in order navigate around the premises in real time. 
+	\noindent Indoor positioning is still not a common occurrence to see within large business locations such as university campuses. Considering the applications of indoor positioning systems and the advantage they could provide this is surprising. The most apparent reason for this is due to the high cost and complexity these systems currently occur for businesses wanting to install them. This paper is going to research the technologies required for an indoor positioning system and aims to implement a generic and easily adaptable system that could make positioning systems more affordable or easier to implement. The final aim of this project is to have an accurate indoor positioning system that can be used by a user on their own mobile device in order navigate around the premises in real time. 
 	\end{abstract}
 	\pagebreak
 	\tableofcontents
@@ -63,8 +62,10 @@
 	\pagebreak\import{chapters/chapter9-evaluation/}{evaluation.tex} 
 	\newpage
 	
+	\printbibliography[title={References}]
+	\newrefsection
 	\nocite{*}
-	\printbibliography
+	\printbibliography[notcategory=cited, title={Bibliography}]
 	\pagebreak
 	\import{appendicies/}{appendicies.tex}
 \end{document}

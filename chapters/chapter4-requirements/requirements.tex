@@ -1,8 +1,15 @@
 \section{Requirements}
-The following chapter will introduce the various requirements for the project. the method of this will be moscow. blah blah blah, The web Android application is a MUST as well as the rest API, however the web application is a could and may not be completed, the MoSCoW requirements generated for the Web application are based on the same principal of what must be there for it to be considered fully-functional
+The following chapter will introduce the various requirements for the project. the method of this will be moscow. The moscow requirements identified for each area cover the requirements for the application to be considered working. However, it's important to remember that the web application itself has a priority of could and may not be fully complete by the end of the project. 
+\subsubsection{Rest API}
+\begin{tabular}{| p{0.1\linewidth} | p{0.2\textwidth} | p{0.6\textwidth} | p{0.1\textwidth}|}
+	\hline
+	\# & Functional/non-functional & Requirement & Priority\\\hline
+	\newrequirement{rest:secure} & functional & Provide all operations identified within the design for the android and web applications to interface as required & Must\\\hline
+	\newrequirement{rest:secure} & non-functional & Be secured with auth for user's interacting & Must\\\hline
+\end{tabular}
 
 \subsubsection{Android}
-\begin{tabular}{| p{0.1\linewidth} | p{0.2\textwidth} | p{0.6\textwidth} | p{0.1\textwidth}|}
+\begin{longtable}{| p{0.1\linewidth} | p{0.2\textwidth} | p{0.6\textwidth} | p{0.1\textwidth}|}
 	\hline
 	\# & Functional/non-functional & Requirement & Priority\\\hline
 	\newrequirement{android:sync} & Functional & Synchronise maps from a central server VIA, mapId \& Password (If applicable)& Must\\\hline
@@ -24,7 +31,7 @@ The following chapter will introduce the various requirements for the project. t
 	\newrequirement{android:posacc} & Non functional & The positioning system must locate the user down to an accuracy of sub 0.5 meters & Must\\\hline
 	\newrequirement{android:rendering} & Non functional & Re-rendering of outdated map state should display in the equivalent of 30fps (33.3 milliseconds) & Must\\\hline
 
-\end{tabular}
+\end{longtable}
 
 
 \subsubsection{Web application}
